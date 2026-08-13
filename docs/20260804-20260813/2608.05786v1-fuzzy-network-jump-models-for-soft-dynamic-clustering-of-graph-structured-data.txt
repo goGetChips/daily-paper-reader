@@ -1,0 +1,1223 @@
+Title: Fuzzy network jump models for soft dynamic clustering of graph-structured data
+
+URL Source: https://arxiv.org/pdf/2608.05786v1
+
+Published Time: Fri, 07 Aug 2026 00:44:05 GMT
+
+Number of Pages: 18
+
+Markdown Content:
+# Fuzzy network jump models for soft dynamic clustering of graph-structured data 
+
+Federico P. Cortese 
+
+University of Milan, Department of Economics, Management, and Quantitative Methods National Research Council, Institute for Applied Mathematics and Information Technologies 
+
+federico.cortese@unimi.it 
+
+Abstract 
+
+We introduce a fuzzy network jump model for clustering time-varying observations in-dexed by the nodes of a weighted graph. The framework allows flexible graph representations with spatial and temporal regularization promoting smooth soft cluster assignments across connected nodes and consecutive time points. Estimation is performed through an efficient alternating optimization scheme that exploits the quadratic structure of the regularization terms. A simulation study covering different levels of spatial dependence and cluster overlap shows that the proposed method accurately recovers the true membership probabilities and outperforms competing clustering methods. An application to traffic-network data for the city of San Francisco identifies interpretable traffic regimes and reveals their evolution over time and across connected road segments. 
+
+Keywords: regime-switching models; soft clustering; space-time interaction; transport model-ing; unsupervised learning 
+
+## 1 Introduction 
+
+Clustering of graph nodes aims to identify groups of vertices that are connected, structurally similar, or characterized by comparable node-level attributes (Schaeffer, 2007). An additional layer of complexity arises when the clustering structure changes over time, giving rise to a dy-namic clustering problem. Relevant examples include social and biological networks, as well as transport systems. In the latter, dynamic node clustering can support the identification of spa-tially coherent traffic regimes and recurrent congestion patterns (Saeedmanesh and Geroliminis, 2017), possibly assisting transport planners in targeting interventions, evaluating network per-formance, and improving infrastructure management. In these applications, nodes may rep-resent traffic sensors, mobility zones, or public transport stations, whereas edges may encode geographic proximity, traffic flows, travel times, or other measures of interaction intensity. Trans-port networks may therefore differ substantially in the meaning and scale of their edge weights. Moreover, node-level observations are often multivariate and heterogeneous, requiring a cluster-ing framework flexible enough to accommodate different data types while capturing temporal dynamics. Graph clustering methods can be broadly grouped into three main families. Topology-based approaches, including spectral clustering, graph-cut methods, and modularity optimiza-tion, partition the nodes by exploiting the structure of a weighted adjacency or affinity matrix (von Luxburg, 2007; Fortunato, 2010). These methods are computationally attractive and re-quire relatively few distributional assumptions, but they typically produce hard partitions, and incorporate node attributes and temporal dependence only indirectly. A second family is repre-sented by probabilistic network models, particularly stochastic block models and their weighted, mixed-membership, and dynamic extensions (Nowicki and Snijders, 2001; Aicher et al., 2015; 1arXiv:2608.05786v1 [stat.ME] 6 Aug 2026 Palowitch et al., 2018; Matias and Miele, 2017; Lee and Wilkinson, 2019). These models pro-vide an explicit probabilistic description of the network, but require the distribution of the edge weights to be specified in advance. They also assume that nodes assigned to the same block have similar connectivity patterns, an assumption that may be restrictive in heteroge-neous transport networks. Dynamic extensions further increase computational complexity, and often require explicit assumptions on the temporal evolution of block memberships or interac-tion parameters. A third family includes neural network-based approaches, which learn low-dimensional node representations from network structure, node attributes, and temporal infor-mation (Kipf and Welling, 2016; Hamilton et al., 2017; Singer et al., 2019; Barros et al., 2023). Although flexible and suitable for complex data, they are often sensitive to tuning choices and difficult to interpret. The present work adopts a different perspective. Rather than treating the edge weights as realizations from a prescribed network-generating distribution or using the graph solely to construct a latent embedding, the graph is introduced as a general regularization structure within a clustering model for multivariate node-level observations. Edge weights determine the strength with which connected nodes are encouraged to exhibit similar cluster memberships and can be flexibly defined in terms of spatial adjacency, geographic distance, network connectivity, or any other application-specific measure of association. The proposed approach, which we refer to as fuzzy network jump model (FNJM), allows each node to exhibit partial membership in multiple regimes. A temporal regularization component further promotes persistence of the memberships over time while preserving the possibility of detecting regime changes, whereas a spatial regularization component encourages similar memberships across connected nodes according to the strength of their connection. The resulting framework lies between purely topological community-detection methods and fully generative network models. It retains direct interpretability in terms of the original node-level variables, accommodates heterogeneous graph structures, and provides a flexible tool for the dynamic analysis of graph-structured data. The proposed framework builds on statistical jump models, a class of unsupervised learning methods introduced by Bemporad et al. (2018) as an alternative to hidden Markov models (Bartolucci et al., 2013; Zucchini et al., 2017) for dynamic modeling of multivariate time series data. Jump models essentially describe the temporal evolution of a complex system through transitions among latent regimes, each represented by a simpler local model inferred from the observed data. By avoiding a fully specified probabilistic state-space structure, they offer a flexible framework for capturing persistent regimes and abrupt changes in complex dynamics. Recent extensions incorporate sparse (Nystrup et al., 2021) and state-conditional (Cortese and Farcomeni, 2026) variable selection, soft clustering of time series data (Aydınhan et al., 2024; Cortese et al., 2025), and spatio-temporal hard clustering (Cortese and Pievatolo, 2026). A simulation study based on data generated under different spatial-dependence and fuzziness scenarios shows that the proposed method accurately recovers the true membership probabilities and outperforms competing models in terms of both soft-membership estimation and cluster-assignment recovery, while an application to the San Francisco traffic network illustrates its ability to identify interpretable congestion states and track their evolution over time and across connected road segments. The rest of the paper is organized as follows. Section 2 introduces the proposed method and the estimation procedure. Section 3 presents the simulation study, while Section 4 describes the empirical application. Section 5 concludes the paper. Appendix A presents additional simulation results. 22 Methodology 
+
+Let zt,m = ( ztm 1, . . . , z tmP )′ denote the P -dimensional vector of observations collected at time 
+
+t = 1 , . . . , T and location m = 1 , . . . , M . We assume that each observation is associated with a membership vector 
+
+ut,m = ( utm 1, . . . , u tmK )′ ∈ ∆K−1,
+
+where ∆K−1 =
+
+{
+
+u ∈ [0 , 1] K :
+
+> K
+
+∑
+
+> k=1
+
+uk = 1 
+
+}
+
+,
+
+is the probability simplex of dimension K − 1. The collection of all membership vectors is denoted by U , while μk denotes the P -dimensional prototype vector associated with cluster k.
+
+2.1 Spatial graph and weights 
+
+The spatial structure is represented by an undirected weighted graph G = ( V, E ), where V =
+
+{1, . . . , M } is the set of locations and E is the set of edges connecting pairs of distinct locations. Let ˜W = ( ˜wim )Mi,m =1 ,
+
+be the corresponding symmetric non-negative weight matrix, satisfying 
+
+˜wim = ˜wmi ≥ 0, ˜wmm = 0 , ˜wim > 0 ⇐⇒ (i, m ) ∈ E. 
+
+The graph can be constructed from an adjacency matrix, an edge list, or a symmetric dissimilarity matrix. In the latter case, given a threshold h > 0, an edge is retained whenever 
+
+dim ≤ h, and its raw weight can be defined through a non-increasing kernel κ(·) as ˜wim =
+
+κ(dim )I(dim ≤ h). The dissimilarity dim may represent geodesic distance, network distance, travel time, or another application-specific notion of spatial proximity. Optionally, the raw weight matrix can be symmetrically degree-normalized. Let 
+
+di =
+
+> M
+
+∑
+
+> m=1
+
+˜wim ,
+
+then define 
+
+W = D−1/2 ˜W D −1/2, D = diag( d1, . . . , d M ).
+
+This normalization prevents highly connected locations from dominating the spatial penalty and ensures a more balanced regularization across nodes with different degrees. Once the graph has been constructed, the estimator stores only the edge list {(i, m, w im ) : ( i, m ) ∈ E}.Consequently, spatial computations are performed over the observed edges rather than over all (M
+
+> 2
+
+) pairs of locations. The model uses the Gower (1971) dissimilarity between observation zt,m and prototype μk,defined as 
+
+g(zt,m , μk) = 1
+
+P
+
+> P
+
+∑
+
+> p=1
+
+δp(ztmp , μ kp ),
+
+where, for a continuous feature, 
+
+δp(ztmp , μ kp ) = |ztmp − μkp |
+
+Rp
+
+,
+
+with Rp denoting the observed range of feature p, whereas for a categorical feature, 
+
+δp(ztmp , μ kp ) = I(ztmp 6 = μkp ).
+
+3Finally, the proposed estimator minimizes 
+
+F (U , μ) = 
+
+> T
+
+∑
+
+> t=1
+> M
+
+∑
+
+> m=1
+> K
+
+∑
+
+> k=1
+
+u φtmk g(zt,m , μk)+ λT
+
+2
+
+> T
+
+∑
+
+> t=2
+> M
+
+∑
+
+> m=1
+
+‖ut,m − ut−1,m ‖22
+
++ λS
+
+2
+
+> T
+
+∑
+
+> t=1
+
+∑
+
+> (i,m )∈E
+
+wim ‖ut,i − ut,m ‖22 ,
+
+(1) subject to ut,m ∈ ∆K−1, t = 1 , . . . , T, m = 1 , . . . , M. 
+
+The parameter φ ≥ 1 controls the degree of fuzziness in the data-fitting term. When 
+
+λT = λS = 0 and φ = 1, the model reduces to a Gower-based version of the k-prototypes algorithm (Huang, 1998). For φ > 1, fuzziness 1 is directly induced by the membership exponent (Dunn, 1973; Bezdek, 1981). For one-hot memberships, 12 ‖u − v‖22 = I(cu 6 = cv), where cu and 
+
+cv denote the corresponding cluster labels. Hence, in the hard-clustering limit, the spatial regularization term reduces to a weighted Potts disagreement penalty (Wu, 1982). The parameters λT , λ S ≥ 0 control temporal and spatial regularization, with larger values promoting smoother memberships over time and across connected locations, respectively. To further characterize the spatial regularization term, let 
+
+DW = diag( dW 
+
+> 1
+
+, . . . , d WM ), dWi =
+
+> M
+
+∑
+
+> m=1
+
+wim ,
+
+and define the weighted graph Laplacian as LW = DW − W . Moreover, let U t be the M ×
+
+K matrix whose m-th row is u′
+
+> t,m
+
+, then the spatial regularization term in Eq. (1) can be equivalently written as 
+
+λS
+
+2
+
+> T
+
+∑
+
+> t=1
+
+tr (U ′
+
+> t
+
+LW U t
+
+) ,
+
+which makes explicit that the penalty smooths membership vectors over the graph, with the contribution of each connection determined by its weight. In Equation 1, we adopt the squared ℓ2-penalty for the spatial and temporal components because it is smooth, has a simple linear gradient, and admits a convenient graph Laplacian representation. Additionally, the quadratic penalty further discourages large differences between neighbouring membership vectors, while the factor 1 /2 ensures consistency with the statistical jump model of Nystrup et al. (2020) in the hard-clustering limit. An ℓ1 alternative, similar to that of Aydınhan et al. (2024), can also be used, but it is computationally less convenient because its non-smoothness complicates gradient-based optimization. 
+
+2.2 Estimation 
+
+The objective in (1) is minimized by block coordinate descent, alternating between membership and prototype updates. Since the complete problem is non-convex, the algorithm is combined with multiple initializations. Specifically, each initialization uses a Gower-based analogue of the 
+
+k-means++ strategy (Arthur et al., 2007).     
+
+> 1Fractional memberships may also arise when φ= 1 if either the temporal or spatial regularization parameter is strictly positive. This occurs because the regularization terms penalize abrupt differences between neighbouring membership vectors, so an interior simplex solution may provide a better compromise between data fit and spatio-temporal smoothness even when φ= 1.
+
+4Membership update . For fixed prototypes, the membership vectors remain coupled through the spatial and temporal penalties. The algorithm performs a Gauss-Seidel sweep (Grippo and Sciandrone, 2000; Tseng, 2001) over the T × M time-location pairs. Condi-tionally on the current values of all neighbouring memberships, the local problem for ut,m 
+
+is min 
+
+> u∈∆K−1
+
+htm (u) = 
+
+> K
+
+∑
+
+> k=1
+
+uφk g(zt,m , μk)+ λT
+
+2
+
+∑ 
+
+> r∈B T(t)
+
+‖u − ur,m ‖22+ λS
+
+2
+
+∑ 
+
+> i∈B S(m)
+
+wim ‖u − ut,i ‖22 ,
+
+(2) where BT (t) contains the available previous and next time points, and BS (m) is the set of spatial neighbours of location m. The k-th component of the local gradient is 
+
+∂h tm 
+
+∂u k
+
+= φ g (zt,m , μk)uφ−1 
+
+> k
+
++ λT
+
+∑ 
+
+> r∈B T(t)
+
+(uk − urmk ) + λS
+
+∑ 
+
+> i∈B S(m)
+
+wim (uk − utik ) ,
+
+which is solved by projected gradient descent (Duchi et al., 2008) 
+
+u(ℓ+1) = Π ∆K−1
+
+[
+
+u(ℓ) − ηℓ∇htm (u(ℓ))
+
+]
+
+,
+
+where Π ∆K−1 denotes the Euclidean projection onto the probability simplex. A backtrack-ing line search reduces ηℓ until the local objective does not increase. The Gauss-Seidel updates alternate between forward and reverse order across iterations, reducing sensitivity to the visiting order. 
+
+Prototype update . For fixed memberships, the prototype of cluster k solves 
+
+μk = arg min 
+
+> μ
+> T
+
+∑
+
+> t=1
+> M
+
+∑
+
+> m=1
+
+u φtmk g(zt,m , μ). (3) Because the Gower dissimilarity is additive across features, the update can be performed feature by feature. Cortese et al. (2025) show that the minimizers of (3) are the weighted medians for continuous features, and the weighted modes for categorical ones, with weights given by u φtmk .After updating the prototypes, all observation-prototype Gower dissimilarities are recomputed. Membership and prototype updates are repeated until 
+
+∣∣∣F (r−1) − F (r)
+
+∣∣∣ ≤ ε
+
+(
+
+1 + 
+
+∣∣∣F (r−1) 
+
+∣∣∣)
+
+,
+
+or until a prescribed maximum number of iterations is reached. The backtracking member-ship updates and exact feature-wise prototype updates yield a non-increasing objective up to numerical tolerance. The computational complexity of model estimation is approximately 
+
+O(KP T M log( T M )). On a MacBook Pro equipped with a 10-core Apple M5 processor and 16 GB of RAM, estimation of the final FNJM model with eight initializations required on aver-age 4 .66 seconds. Code for reproducibility, including a toy example and the empirical analysis of Section 4, is available at https://github.com/FedericoCortese/FNJM .
+
+## 3 Simulation study 
+
+We conduct a simulation study to evaluate the ability of the proposed model to recover a time-varying distribution of fuzzy memberships under different degrees of spatial dependence and cluster overlap. The data-generating process combines spatially correlated latent score fields 5Table 1: Simulation scenarios considered in the study.                
+
+> ατScenario Scenario label 0.01 0.2 Strong spatial dependence, soft memberships S-S 0.01 5.0 Strong spatial dependence, hard memberships S-H 1.00 0.2 Weak spatial dependence, soft memberships W-S 1.00 5.0 Weak spatial dependence, hard memberships W-H
+
+with temporally persistent dynamics and heavy-tailed observations. We independently sample 
+
+M locations from the uniform distribution on [0 , 1] 2, and let dim denote the Euclidean distance between locations i and m. The estimation graph is constructed using a threshold h, with raw weights ˜wim = exp( −dim /h )I(dim ≤ h). Then, the resulting weights are symmetrically degree-normalized before model estimation. Following the spatial construction of Paci and Finazzi (2018), we define the dense spatial correlation matrix 
+
+Γα = {exp( −αd im )}Mi,m =1 ,
+
+where α > 0 controls the decay of spatial dependence. For each cluster k = 1 , . . . , K , we independently generate a spatio-temporal latent score field at,k = ( at1k , . . . , a tM k )′ according to 
+
+a1,k ∼ N M
+
+(0, τ 2Γα
+
+) , (4) 
+
+at,k = βat−1,k + τ √1 − β2 εt,k , εt,k ∼ N M (0, Γα) , t = 2 , . . . , T. (5) The factor √1 − β2 ensures that τ 2 is the stationary marginal variance of each latent score, independently of the value of β. We fix β = 0 .9, corresponding to strong temporal persistence. The true fuzzy memberships are then obtained through the location- and time-specific softmax transformation 
+
+u⋆tmk = exp( atmk )
+
+∑Kh=1 exp( atmh ) , k = 1 , . . . , K, (6) so that u⋆tmk ∈ (0 , 1) and ∑Kk=1 u⋆tmk = 1. For each space-time observation, a latent component is sampled according to 
+
+stm | u⋆t,m ∼ Categorical ( u⋆tm 1, . . . , u ⋆tmK ) .
+
+Conditional on stm = k, the P -dimensional observation is generated as 
+
+zt,m | stm = k ∼ T P,ν 
+
+(
+
+μk, ν − 2
+
+ν IP
+
+)
+
+, (7) where TP,ν (μ, Σ) denotes a multivariate Student-t distribution with location μ, scale matrix Σ,and ν degrees of freedom. We set K = 2, with component locations μ1 = ( −1, −1, −1) ′, μ2 = (1 , 1, 1) ′ . The number of features is fixed at P = 3, which, together with the chosen values of T = 200 and M = 300, essentially mimic the traffic application of Section 4. Finally, we set the degrees of freedom to 
+
+ν = 4. We vary the spatial correlation decay parameter as α ∈ { 0.01 , 1}, corresponding to strong (S-) and weak (W-) spatial dependence, respectively. We also vary the latent-score scale as 
+
+τ ∈ { 0.2, 5}, yielding soft (-S) and nearly hard (-H) memberships, respectively. This choice of parameters results in the four scenarios reported in Table 1. For each scenario, 100 independent datasets are generated using different random seeds. We fix the distance threshold at h = 0 .05 for all scenarios and replications. For M = 300 locations independently sampled from the unit square, the threshold graph has an average 6density of approximately 0 .76% and an average degree of 2 .26, closely matching the density of 0 .72% and average degree of 2 .21 observed in the traffic application. Since the threshold graph may be disconnected, we augment its edge set with the Euclidean minimum spanning tree to ensure connectivity. Appendix A presents a complementary simulation study based on a substantially denser estimation graph. 
+
+3.1 Model fitting and performance assessment 
+
+For each simulated dataset, FNJM is fitted over the grid 
+
+λT , λ S ∈ { 0, 0.1, . . . , 1}, φ ∈ { 1, 1.25 , 1.50 , 1.75 , 2},
+
+which contains 11 × 11 × 5 = 605 configurations for each simulated dataset. We compare the proposed method with four competitors: the k-prototypes algorithm of Huang (1998), the statistical jump model of Nystrup et al. (2020), the fuzzy jump model of Cortese et al. (2025), and a Gaussian hidden Markov random-field model (G-HMRF, Yang et al., 2022) that incorporates spatial dependence through a neighbourhood graph and is used here as a purely spatial benchmark. For each method and scenario, the reported configuration of hyperparameters is the one minimizing the median membership root mean squared error (RMSE); balanced accuracy (BAC) and the adjusted Rand index (ARI, Hubert and Arabie, 1985) are used as secondary criteria in the event of ties. Each fit uses one initialization, 10 iterations, and a numerical tolerance of 10 −4. To overcome label switching, the estimated memberships are first aligned with the true memberships by selecting the permutation of cluster labels that minimizes the total squared membership error. Let ̂ utmk denote the aligned estimated membership. The performance of the competing models in recovering the true fuzzy memberships is compared using the RMSE and cross-entropy (CE), defined as RMSE = 
+
+[
+
+1
+
+T M K 
+
+> T
+
+∑
+
+> t=1
+> M
+
+∑
+
+> m=1
+> K
+
+∑
+
+> k=1
+
+(̂ utmk − u⋆tmk )2
+
+]1/2
+
+, (8) CE = − 1
+
+T M 
+
+> T
+
+∑
+
+> t=1
+> M
+
+∑
+
+> m=1
+> K
+
+∑
+
+> k=1
+
+u⋆tmk log( ̂utmk ) . (9) To evaluate recovery of the dominant regimes, we additionally compare the maximum-a-posteriori regime classification ̂ stm = arg max k̂ utmk , with its ground truth counterpart 
+
+s⋆tm = arg max k u⋆tmk , using BAC and ARI. 
+
+3.2 Simulation results and sensitivity analysis 
+
+Table 2 reports the median RMSE, CE, BAC, and ARI over 100 replicates for each method and scenario, with standard deviations in parentheses. FNJM achieves the best performance across all scenarios, attaining the lowest RMSE and CE and the highest BAC and ARI. Its advantage is particularly pronounced under strong spatial dependence, where it reaches a BAC of 0 .958 and an ARI of 0 .841 in the S-H scenario. Among the competing methods, Fuzzy JM generally performs best, while the relative performance of JM, G-HMRF, and k-prototypes varies across scenarios and metrics. The S-S and W-S scenarios are the most challenging in terms of classification performance, with FNJM attaining an ARI of 0 .137 and 0.141, respectively. This is expected because soft memberships make the latent states less clearly separated, even when spatial dependence is strong. In fact, RMSEs remain satisfactory in both cases. Figure 1 provides a graphical comparison of the competing methods across the four simulation scenarios, confirming the superior performance of FNJM. 7Table 2: Simulation results for each method across scenarios. Entries report median performance over 100 replicates, with standard deviations in parentheses. For each scenario, the lowest median RMSE and CE and the highest median BAC and ARI are shown in bold. 
+
+α τ Method RMSE CE BAC ARI 
+
+S-S 
+
+0.01 0.2 FNJM 0.055 
+
+> (0.061)
+
+0.691 
+
+> (0.045)
+
+0.676 
+
+> (0.100)
+
+0.137 
+
+> (0.115)
+
+Fuzzy JM 0.087 
+
+> (0.007)
+
+0.700 
+
+> (0.003)
+
+0.582 
+
+> (0.038)
+
+0.028 
+
+> (0.022)
+
+G-HMRF 0.461 
+
+> (0.018)
+
+3.753 
+
+> (0.650)
+
+0.545 
+
+> (0.032)
+
+0.009 
+
+> (0.008)
+
+JM 0.168 
+
+> (0.099)
+
+0.766 
+
+> (1.546)
+
+0.575 
+
+> (0.050)
+
+0.027 
+
+> (0.031)
+
+k-prototypes 0.490 
+
+> (0.019)
+
+16.183 
+
+> (1.542)
+
+0.544 
+
+> (0.017)
+
+0.009 
+
+> (0.007)
+
+S-H 
+
+0.01 5.0 FNJM 0.110 
+
+> (0.091)
+
+0.248 
+
+> (0.120)
+
+0.958 
+
+> (0.101)
+
+0.841 
+
+> (0.239)
+
+Fuzzy JM 0.209 
+
+> (0.081)
+
+0.345 
+
+> (0.128)
+
+0.882 
+
+> (0.124)
+
+0.606 
+
+> (0.240)
+
+G-HMRF 0.347 
+
+> (0.056)
+
+1.628 
+
+> (0.416)
+
+0.841 
+
+> (0.036)
+
+0.416 
+
+> (0.139)
+
+JM 0.228 
+
+> (0.123)
+
+1.270 
+
+> (2.634)
+
+0.866 
+
+> (0.134)
+
+0.574 
+
+> (0.258)
+
+k-prototypes 0.323 
+
+> (0.093)
+
+4.633 
+
+> (2.317)
+
+0.853 
+
+> (0.122)
+
+0.500 
+
+> (0.203)
+
+W-S 
+
+1.00 0.2 FNJM 0.056 
+
+> (0.060)
+
+0.691 
+
+> (0.039)
+
+0.680 
+
+> (0.088)
+
+0.141 
+
+> (0.088)
+
+Fuzzy JM 0.088 
+
+> (0.011)
+
+0.699 
+
+> (0.005)
+
+0.588 
+
+> (0.032)
+
+0.033 
+
+> (0.017)
+
+G-HMRF 0.445 
+
+> (0.019)
+
+4.788 
+
+> (0.670)
+
+0.547 
+
+> (0.020)
+
+0.009 
+
+> (0.006)
+
+JM 0.172 
+
+> (0.076)
+
+0.771 
+
+> (0.811)
+
+0.592 
+
+> (0.042)
+
+0.036 
+
+> (0.026)
+
+k-prototypes 0.482 
+
+> (0.023)
+
+15.525 
+
+> (1.896)
+
+0.543 
+
+> (0.019)
+
+0.008 
+
+> (0.007)
+
+W-H 
+
+1.00 5.0 FNJM 0.160 
+
+> (0.078)
+
+0.280 
+
+> (0.113)
+
+0.924 
+
+> (0.109)
+
+0.725 
+
+> (0.213)
+
+Fuzzy JM 0.206 
+
+> (0.086)
+
+0.333 
+
+> (0.138)
+
+0.895 
+
+> (0.113)
+
+0.633 
+
+> (0.217)
+
+G-HMRF 0.330 
+
+> (0.054)
+
+1.552 
+
+> (0.390)
+
+0.844 
+
+> (0.035)
+
+0.453 
+
+> (0.133)
+
+JM 0.210 
+
+> (0.097)
+
+1.124 
+
+> (1.058)
+
+0.892 
+
+> (0.109)
+
+0.629 
+
+> (0.210)
+
+k-prototypes 0.311 
+
+> (0.083)
+
+4.577 
+
+> (1.266)
+
+0.860 
+
+> (0.094)
+
+0.534 
+
+> (0.187)
+
+8S−S S−H W−S W−H 
+
+Membership RMSE 
+
+> 0.0 0.1 0.2 0.3 0.4 0.5
+> S−S S−H W−S W−H
+
+Cross−entropy 
+
+> 0510 15
+> S−S S−H W−S W−H
+
+Balanced accuracy 
+
+> 0.0 0.2 0.4 0.6 0.8 1.0
+> S−S S−H W−S W−H
+
+Adjusted Rand index 
+
+> 0.0 0.2 0.4 0.6 0.8 1.0
+
+FNJM Fuzzy JM G−HMRF JM k−prototypes 
+
+Figure 1: Performance comparison across simulation scenarios based on membership RMSE, cross-entropy, balanced accuracy, and the adjusted Rand index. Bars show median values over 100 replicates, with standard deviations as error bars. 90.0 0.2 0.4 0.6 0.8 1.0 0.0  0.2  0.4  0.6  0.8  1.0                
+
+> S−S
+> λT
+> λS
+> 0.1 0.2 0.3 0.4 0.0 0.2 0.4 0.6 0.8 1.0 0.0  0.2  0.4  0.6  0.8  1.0
+> S−H
+> λT
+> λS
+> 0.1 0.2 0.3 0.4 0.0 0.2 0.4 0.6 0.8 1.0 0.0  0.2  0.4  0.6  0.8  1.0
+> W−S
+> λT
+> λS
+> 0.1 0.2 0.3 0.4 0.0 0.2 0.4 0.6 0.8 1.0 0.0  0.2  0.4  0.6  0.8  1.0
+> W−H
+> λT
+> λS
+> 0.1 0.2 0.3 0.4
+
+Figure 2: Membership root mean squared error (RMSE) over the temporal and spatial regu-larization parameters across the four simulation scenarios. The cross identifies the parameter combination minimizing the RMSE. We additionally assess the sensitivity of the model to the temporal and spatial regulariza-tion parameters, λT and λS . Figure 2 reports the membership RMSE over their joint parameter grid. In the soft-membership scenarios (top-left and bottom-left panels), most non-zero combi-nations yield near-optimal performance, indicating substantial robustness to the choice of the regularization parameters. As expected, larger values of λS are preferred under stronger spatial dependence. In the nearly hard-membership scenarios, the choice of λS becomes more influen-tial, particularly under weak spatial dependence, where the graph provides less information for recovering the latent memberships. Figure 3 reports the membership RMSE across values of the fuzziness parameter for each simulation scenario. In the soft-membership scenarios, performance is largely insensitive to this choice. By contrast, in the nearly hard-membership scenarios, lower values are preferred, with the best performance generally obtained for values below approximately 1 .25. 
+
+## 4 Application to traffic data 
+
+We apply the proposal to data from the California Department of Transportation Per-formance Measurement System (Caltrans PeMS), a widely used benchmark data source for spatio-temporal traffic analysis (Guo et al., 2019). In particular, we consider the dataset referred to as PEMS04, comprising measurements from M = 307 monitoring sta-tions in Caltrans District 4. The original data are available, subject to free registration, from 
+
+https://pems.dot.ca.gov/?dnode=Clearinghouse&type=station_5min&district_id=4&submit=Submit .At each station and time point, three continuous traffic variables are recorded: traffic flow (the number of vehicles passing the sensor during a fixed time interval), road occupancy (the proportion of time the sensor is occupied, ranging from 0 to 1), and average vehicle speed in 10 1.0 1.2 1.4 1.6 1.8 2.0 0.05  0.10  0.15  0.20 
+
+> Membership RMSE
+> Fuzziness parameter S−S S−H W−S W−H
+
+Figure 3: Membership root mean squared error (RMSE) across values of the fuzziness parameter for the four simulation scenarios. mph. The original observations are recorded every five minutes. We consider hourly averages of the first seven days, obtaining T = 168 observations for each station. The resulting dataset comprises 168 × 307 = 51 576 space-time observations. In order to display the estimated clusters over the road network, we match station identifiers with the corresponding geographic metadata, available from https://pems.dot.ca.gov/?dnode=Clearinghou 
+
+The spatial graph is constructed from the available station connections and inter-station dis-tances. For each connected pair, the raw spatial weight is defined through a Gaussian kernel, with bandwidth equal to the median observed edge distance; the resulting weights are subsequently symmetrically degree-normalized. Figure 4 presents the time series (averaged across all traffic sensors) and violin plots of traffic flow, occupancy, and speed. The plots reveal a clear day-night cycle, with flow and occupancy increasing during daytime hours and declining overnight. The violin plots indicate right-skewed distributions for flow and occupancy and a pronounced left tail for speed. The unconditional medians are 166 .42 for flow, 0 .0404 for occupancy, and 65 .90 mph for speed, with corresponding standard deviations of 147 .97, 0 .0365, and 6 .00, respectively. Flow and occupancy are strongly positively correlated ( ρ = 0 .710), whereas speed is negatively correlated with both flow ( ρ = −0.329) and, more markedly, occupancy ( ρ = −0.766). 
+
+4.1 Results 
+
+We select the number of clusters K, the fuzziness parameter φ, and the regularization parameters 
+
+λT and λS , through a grid search over 
+
+K ∈ { 2, 3, 4}, φ ∈ { 1, 1.05 , . . . , 1.50 }, λT , λ S ∈ { 0, 0.1, . . . , 1}.
+
+For each candidate model, we compute the fuzzy silhouette index of Campello and Hruschka (2006) separately at each time point using Gower dissimilarities, and use its median over the 168 time points as the selection criterion. The best-performing configuration is K = 2 , φ =1.15 , λ T = 1 , λ S = 0 .9, with a median fuzzy silhouette of 0 .875. The estimated cluster prototypes are reported in Table 3. Cluster 1 is characterized by substantially higher flow and occupancy, with estimated prototype values of 312 .50 and 0 .0619, respectively, together with a lower speed of 64 .23 mph. We therefore interpret it as a congested 
+
+or high-traffic state. Conversely, Cluster 2, with lower flow (99 .75) and occupancy (0 .0258) and a higher speed (66 .76 mph), represents the uncongested , low-traffic state. 11 Flow    
+
+> 100 200 300 050 100 150
+> 0200 400 600 800
+
+Occupancy    
+
+> 0.025 0.050 0.075 0.100 050 100 150
+> 0.0 0.2 0.4 0.6
+
+Speed    
+
+> 55 60 65 050 100 150
+> 20 40 60 80
+
+Figure 4: Time series and violin plots of traffic flow, occupancy, and speed. Table 3: Estimated prototypes for the two latent traffic states. Flow Occupancy Speed (mph) Cluster 1 312.50 0.0619 64.23 Cluster 2 99.75 0.0258 66.76 12 Congested State Memberships        
+
+> Time Location 20 40 60 80 100 120 140 160 50  100  150  200  250  300
+> 0.00 0.20 0.40 0.60 0.80 1.00 ut,1
+
+Figure 5: Estimated membership in the congested state (Cluster 1) across the 168 hourly ob-servations and 307 monitoring stations. Darker colours indicate a larger estimated membership in the congested state. Figure 5 displays the estimated membership in the congested state for each station and time point, highlighting both persistent congestion patterns and observations with more uncertain state assignments. It reveals a clear daily cycle, with congestion typically increasing during daytime hours, as well as road segments that are systematically less prone to congestion, usually those located outside the city centre. Figure 6 shows three snapshots of the spatial membership in the congested state at different times of day. The panels reveal low congestion during nighttime hours, increased activity in the late morning, and widespread congestion in the late afternoon, associ-ated with the evening commute. They also illustrate how traffic regimes evolve across the road network while remaining spatially coherent among connected monitoring sta-tions. An interactive visualization of the estimated dynamic traffic clusters is available at 
+
+https://fpcortese.shinyapps.io/dynamic-traffic-clustering/ .
+
+## 5 Discussion 
+
+We introduced a fuzzy network jump model for the dynamic clustering of graph-structured data. The framework combines temporal and spatial regularization to promote persistent and spatially coherent memberships while retaining the ability to detect regime changes. Its flex-ibility stems from the general representation of the graph, whose edge weights may encode adjacency, distance, connectivity strength, or other application-specific relationships. The simulation study shows that the proposed method accurately recovers latent mem-berships across different levels of spatial dependence and cluster overlap. The application to traffic-network data further demonstrates its ability to identify interpretable traffic regimes and describe their evolution over time and across connected road segments. A limitation of the empirical application is that the traffic network is represented as an undirected graph, so the model cannot distinguish between traffic flows occurring in opposite directions along the same connection. Future work may consider robust extensions for handling outliers and missing data. A13 30 km     
+
+> N
+> Caltrans PeMS District 4 — 307 sensors
+> Membership congested — time 1
+> Basemap © OpenStreetMap contributors
+> 30 km
+> N
+> Caltrans PeMS District 4 — 307 sensors
+> Membership congested — time 10
+> Basemap © OpenStreetMap contributors
+> 30 km
+> N
+> Caltrans PeMS District 4 — 307 sensors
+> Membership congested — time 18
+> Basemap © OpenStreetMap contributors
+> Membership congested
+> 0.00 0.25 0.50 0.75 1.00
+
+Figure 6: Estimated membership in the congested state at time indices t = 1, t = 10, and t = 18, shown from left to right. Node colours represent the estimated membership utm 1,m = 1 , . . . , M ,with larger values indicating stronger evidence of congestion; lines represent connections in the spatial graph. promising direction is to incorporate the cellwise contamination paradigm of Zaccaria et al. (2026), allowing anomalous entries to be identified and downweighted without discarding entire observations. 
+
+## A Additional simulation results 
+
+In this section, we replicate the simulation study of Section 3 using a substantially denser estimation graph. Specifically, we fix the distance threshold at h = 0 .28 for all scenarios and replications, yielding a graph density of approximately 20%, which represents a more challenging setting. Table 4 reports the median RMSE, CE, BAC, and ARI over 100 replicates for each method and scenario, with standard deviations in parentheses. As before, FNJM achieves the best performance across all scenarios, attaining the lowest RMSE and CE and the highest BAC and ARI. Its advantage is particularly pronounced under strong spatial dependence, where it reaches a BAC of 0 .978 and an ARI of 0 .916 in the S-H scenario. Among the competing methods, Fuzzy JM generally performs best, while the relative performance of JM, G-HMRF, and k-prototypes varies across scenarios and metrics. The W-S scenario is the most challenging in terms of classification performance, with FNJM attaining a BAC of 0 .727 and an ARI of 0 .236. This is expected because weak spatial dependence provides limited information from the graph, while soft memberships make the latent states less clearly separated. 14 Table 4: Simulation results for each method across scenarios under the denser graph specification. Entries report median performance over 100 replicates, with standard deviations in parentheses. For each scenario, the lowest median RMSE and CE and the highest median BAC and ARI are shown in bold. 
+
+α τ Method RMSE CE BAC ARI 
+
+S-S 
+
+0.01 0.2 FNJM 0.036 
+
+> (0.073)
+
+0.687 
+
+> (0.059)
+
+0.805 
+
+> (0.146)
+
+0.402 
+
+> (0.245)
+
+Fuzzy JM 0.087 
+
+> (0.007)
+
+0.700 
+
+> (0.003)
+
+0.582 
+
+> (0.038)
+
+0.028 
+
+> (0.022)
+
+G-HMRF 0.459 
+
+> (0.021)
+
+3.752 
+
+> (0.673)
+
+0.548 
+
+> (0.034)
+
+0.009 
+
+> (0.009)
+
+JM 0.168 
+
+> (0.099)
+
+0.766 
+
+> (1.546)
+
+0.575 
+
+> (0.050)
+
+0.027 
+
+> (0.031)
+
+k-prototypes 0.490 
+
+> (0.019)
+
+16.183 
+
+> (1.542)
+
+0.544 
+
+> (0.017)
+
+0.009 
+
+> (0.007)
+
+S-H 
+
+0.01 5.0 FNJM 0.055 
+
+> (0.101)
+
+0.209 
+
+> (0.121)
+
+0.978 
+
+> (0.107)
+
+0.916 
+
+> (0.235)
+
+Fuzzy JM 0.209 
+
+> (0.081)
+
+0.345 
+
+> (0.128)
+
+0.882 
+
+> (0.124)
+
+0.606 
+
+> (0.240)
+
+G-HMRF 0.301 
+
+> (0.048)
+
+1.526 
+
+> (0.388)
+
+0.880 
+
+> (0.028)
+
+0.533 
+
+> (0.118)
+
+JM 0.228 
+
+> (0.123)
+
+1.270 
+
+> (2.634)
+
+0.866 
+
+> (0.134)
+
+0.574 
+
+> (0.258)
+
+k-prototypes 0.323 
+
+> (0.093)
+
+4.633 
+
+> (2.317)
+
+0.853 
+
+> (0.122)
+
+0.500 
+
+> (0.203)
+
+W-S 
+
+1.00 0.2 FNJM 0.049 
+
+> (0.057)
+
+0.689 
+
+> (0.045)
+
+0.727 
+
+> (0.099)
+
+0.236 
+
+> (0.138)
+
+Fuzzy JM 0.088 
+
+> (0.011)
+
+0.699 
+
+> (0.005)
+
+0.588 
+
+> (0.032)
+
+0.033 
+
+> (0.017)
+
+G-HMRF 0.439 
+
+> (0.021)
+
+4.820 
+
+> (0.688)
+
+0.548 
+
+> (0.023)
+
+0.010 
+
+> (0.007)
+
+JM 0.172 
+
+> (0.076)
+
+0.771 
+
+> (0.811)
+
+0.592 
+
+> (0.042)
+
+0.036 
+
+> (0.026)
+
+k-prototypes 0.482 
+
+> (0.023)
+
+15.525 
+
+> (1.896)
+
+0.543 
+
+> (0.019)
+
+0.008 
+
+> (0.007)
+
+W-H 
+
+1.00 5.0 FNJM 0.182 
+
+> (0.061)
+
+0.301 
+
+> (0.089)
+
+0.913 
+
+> (0.081)
+
+0.691 
+
+> (0.167)
+
+Fuzzy JM 0.206 
+
+> (0.086)
+
+0.333 
+
+> (0.138)
+
+0.895 
+
+> (0.113)
+
+0.633 
+
+> (0.217)
+
+G-HMRF 0.313 
+
+> (0.045)
+
+1.506 
+
+> (0.369)
+
+0.860 
+
+> (0.028)
+
+0.494 
+
+> (0.113)
+
+JM 0.210 
+
+> (0.097)
+
+1.124 
+
+> (1.058)
+
+0.892 
+
+> (0.109)
+
+0.629 
+
+> (0.210)
+
+k-prototypes 0.311 
+
+> (0.083)
+
+4.577 
+
+> (1.266)
+
+0.860 
+
+> (0.094)
+
+0.534 
+
+> (0.187)
+
+15 References 
+
+Aicher, C., Jacobs, A.Z., Clauset, A., 2015. Learning latent block structure in weighted networks. Journal of Complex Networks 3, 221–248. doi: 10.1093/comnet/cnu026 .Arthur, D., Vassilvitskii, S., et al., 2007. k-means++: The advantages of careful seeding, in: Proceedings of the Eighteenth Annual ACM–SIAM Symposium on Discrete Algorithms, pp. 1027–1035. Aydınhan, A.O., Kolm, P.N., Mulvey, J.M., Shu, Y., 2024. Identifying patterns in financial markets: Extending the statistical jump model for regime identification. Annals of Operations Research , 1–37. Barros, C.D.T., Mendon¸ ca, M.R.F., Vieira, A.B., Ziviani, A., 2023. A survey on embedding dynamic graphs. ACM Computing Surveys 55, 1–37. doi: 10.1145/3493596 .Bartolucci, F., Farcomeni, A., Pennoni, F., 2013. Latent Markov Models for Longitudinal Data. Chapman & Hall/CRC Press, Boca Raton, FL. Bemporad, A., Breschi, V., Piga, D., Boyd, S.P., 2018. Fitting jump models. Automatica 96, 11–21. Bezdek, J.C., 1981. Pattern recognition with fuzzy objective function algorithms. Springer Science & Business Media. Campello, R.J., Hruschka, E.R., 2006. A fuzzy extension of the silhouette width criterion for cluster analysis. Fuzzy Sets and Systems 157, 2858–2875. Cortese, F.P., Farcomeni, A., 2026. Robust state-conditional feature-weighted jump models for temporal clustering. arXiv preprint arXiv:2606.13146 . Cortese, F.P., Pievatolo, A., 2026. Spatio-temporal jump model for urban thermal comfort monitoring. Stochastic Environmental Research and Risk Assessment 40, 94. Cortese, F.P., Pievatolo, A., Alessi, E.M., 2025. Fuzzy jump models for soft and hard clustering of multivariate time series data. arXiv preprint arXiv:2509.26029 . Duchi, J., Shalev-Shwartz, S., Singer, Y., Chandra, T., 2008. Efficient projections onto the 
+
+ℓ1-ball for learning in high dimensions, in: Proceedings of the 25th international conference on Machine learning, pp. 272–279. Dunn, J.C., 1973. A fuzzy relative of the ISODATA process and its use in detecting compact well-separated clusters. Journal of Cybernetics 3, 32–57. Fortunato, S., 2010. Community detection in graphs. Physics Reports 486, 75–174. doi: 10.1016/j.physrep.2009.11.002 .Gower, J.C., 1971. A general coefficient of similarity and some of its properties. Biometrics , 857–871. Grippo, L., Sciandrone, M., 2000. On the convergence of the block nonlinear Gauss–Seidel method under convex constraints. Operations Research Letters 26, 127–136. Guo, S., Lin, Y., Feng, N., Song, C., Wan, H., 2019. Attention based spatial-temporal graph convolutional networks for traffic flow forecasting, in: Proceedings of the AAAI conference on artificial intelligence, pp. 922–929. 16 Hamilton, W.L., Ying, R., Leskovec, J., 2017. Inductive representation learning on large graphs, in: Advances in Neural Information Processing Systems, pp. 1024–1034. Huang, Z., 1998. Extensions to the k-means algorithm for clustering large data sets with categorical values. Data Mining and Knowledge Discovery 2, 283–304. Hubert, L., Arabie, P., 1985. Comparing partitions. Journal of Classification 2, 193–218. Kipf, T.N., Welling, M., 2016. Variational graph auto-encoders. arXiv preprint arXiv:1611.07308 
+
+arXiv:1611.07308 .Lee, C., Wilkinson, D.J., 2019. A review of stochastic block models and extensions for graph clustering. Applied Network Science 4, 122. doi: 10.1007/s41109-019-0232-2 .von Luxburg, U., 2007. A tutorial on spectral clustering. Statistics and Computing 17, 395–416. doi: 10.1007/s11222-007-9033-z .Matias, C., Miele, V., 2017. Statistical clustering of temporal networks through a dynamic stochastic block model. Journal of the Royal Statistical Society: Series B (Statistical Method-ology) 79, 1119–1141. doi: 10.1111/rssb.12200 .Nowicki, K., Snijders, T.A.B., 2001. Estimation and prediction for stochastic blockstructures. Journal of the American Statistical Association 96, 1077–1087. doi: 10.1198/016214501753208735 .Nystrup, P., Kolm, P.N., Lindstr¨ om, E., 2021. Feature selection in jump models. Expert Systems with Applications 184, 115558. Nystrup, P., Lindstr¨ om, E., Madsen, H., 2020. Learning hidden Markov models with persistent states by penalizing jumps. Expert Systems with Applications 150, 113307. Paci, L., Finazzi, F., 2018. Dynamic model-based clustering for spatio-temporal data. Statistics and Computing 28, 359–374. Palowitch, J., Bhamidi, S., Nobel, A.B., 2018. Significance-based community detection in weighted networks. Journal of Machine Learning Research 18, 1–48. Saeedmanesh, M., Geroliminis, N., 2017. Dynamic clustering and propagation of congestion in heterogeneously congested urban traffic networks. Transportation Research Procedia 23, 962–979. Schaeffer, S.E., 2007. Graph clustering. Computer Science Review 1, 27–64. Singer, U., Guy, I., Radinsky, K., 2019. Node2Bits: Compact time- and attribute-aware node representations for user starring prediction, in: Proceedings of the 12th ACM International Conference on Web Search and Data Mining, ACM. pp. 169–177. doi: 10.1145/3289600.3290998 .Tseng, P., 2001. Convergence of a block coordinate descent method for nondifferentiable mini-mization. Journal of Optimization Theory and Applications 109, 475–494. Wu, F.Y., 1982. The Potts model. Reviews of modern physics 54, 235. Yang, Y., Shi, X., Liu, W., Zhou, Q., Lau, M.C., Lim, J.C.T., Sun, L., Ng, C.C.Y., Yeong, J., Liu, J., 2022. SC-MEB: Spatial clustering with hidden markov random field using empirical bayes. Briefings in Bioinformatics 23, bbab466. doi: 10.1093/bib/bbab466 .17 Zaccaria, G., Benzakour, L., Garc´ ıa-Escudero, L.A., Greselin, F., Mayo-´Iscar, A., 2026. Robust fuzzy clustering with cellwise outliers. International Journal of Approximate Reasoning , 109698. Zucchini, W., MacDonald, I.L., Langrock, R., 2017. Hidden Markov models for time series: An introduction using R. CRC press, Boca Raton, FL. 18

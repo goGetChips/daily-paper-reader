@@ -1,0 +1,558 @@
+Title: An improved car-oriented mean-field theory for stochastic traffic flow models
+
+URL Source: https://arxiv.org/pdf/2608.04731v1
+
+Published Time: Thu, 06 Aug 2026 00:50:21 GMT
+
+Number of Pages: 16
+
+Markdown Content:
+# An improved car-oriented mean-field theory for stochastic traffic flow models 
+
+Yasar Efe Dai 1,a , Andreas Schadschneider 1,3,b , Michael Schreckenberg 2,c 
+
+> 1
+
+Institut f¨ ur Theoretische Physik, Universit¨ at zu K¨ oln, 50937 K¨ oln, Germany 
+
+> 2
+
+Physik von Transport und Verkehr, Universit¨ at Duisburg-Essen, 47048 Duisburg, Germany 
+
+> 3
+
+Institut f¨ ur Physikdidaktik, Universit¨ at zu K¨ oln, 50931 K¨ oln, Germany E-mail: aydai2@smail.uni-koeln.de, bas@thp.uni-koeln.de, 
+
+> c
+
+michael.schreckenberg@uni-due.de 
+
+6 August 2026 
+
+Abstract. We propose an improved mean-field analysis of cellular automata models of single-lane vehicular traffic. By combining aspects of the Car-Oriented-Mean-Field (COMF) theory and the 2-site cluster method, which have been previously successfully applied to similar models, we aim to capture both short- and long-range correlations more accurately. In contrast to classical mean-field theories, the improved method is well suited for models with inhomogeneous stationary states and able to capture the essential properties of phase separation, e.g. in models with slow-to-start rules. The improved accuracy and new physical insights are illustrated through an application to the VDR model with vmax = 1. 
+
+1. Introduction 
+
+Cellular automata (CA) models are a very useful tool for the simulation of highway and urban traffic [1, 2]. Due to their discrete space-time nature and rule-based dynamics, they are ideally suited for large-scale computer simulations. This makes faster-than-real-time simulations of large highway networks possible and allows for traffic flow predictions (see e.g. [3, 4, 5] for early works). Nevertheless, exact analytical results can provide deeper insight into the basic mechanisms of such models, for example, the occurrence of phase transitions [6, 7] or the existence of metastable states. The Nagel-Schreckenberg (NaSch) model introduced in [8] is a seminal model for traffic flow. It is closely related to the Asymmetric Simple Exclusion Process (ASEP) .The ASEP is the paradigmatic model for driven diffusion in one dimension and has been studied intensively so that several exact results are known [9, 10, 11]. The special case vmax = 1 of the NaSch model is equivalent to the Totally Asymmetric Simple Exclusion Process (TASEP) with parallel dynamics where all lattice sites are updated simultaneously and particles are allowed to diffuse only in one direction. arXiv:2608.04731v1 [cond-mat.stat-mech] 5 Aug 2026 An improved car-oriented mean-field theory for stochastic traffic flow models 2In contrast to the continuous time TASEP, where site occupations are uncorrelated and a simple mean-field approach is exact for the stationary state in the case of periodic boundary conditions, the TASEP with parallel dynamics exhibits strong short-range correlations. These can be attributed to the existence of so-called Garden of Eden states (GOE) [12], i.e. states that cannot be reached by the dynamics. These states cannot be captured by mean-field theory, but by the two-site cluster approach [13] and the 
+
+Car-Oriented-Mean-Field (COMF) theory [14] which yield the exact stationary state. In this work, we investigate a novel analytical approach that builds on the COMF theory and incorporates elements of the two-cluster approach. The new description aims at improving the accuracy of the well-known COMF theory to better capture the underlying physics of CA models for traffic flow. We present it in the context of an extended NaSch model, the Velocity-Dependent-Randomization (VDR) model [15]. The VDR model is a natural generalization of the NaSch model where the slowing down probability depends on the momentary velocity of the car. In COMF theory, the state of the system is described by the velocities of the vehicles and the numbers of empty sites in front of them, usually referred to as the headway. It is a genuine mean-field theory in which all correlations between the dynamical variables of different vehicles are neglected. Within this framework, the distributions Pv(n) of vehicles with velocity v and headway n are treated exactly ‡. In the two-cluster approach, the state of the system is described by the occupation numbers of pairs of sites. The two-site probabilities Pσ,σ ′ are treated exactly, where σ and σ′ denote the occupation numbers of some neighbouring sites. Although exact for the NaSch model with vmax = 1, COMF fails to accurately describe inhomogeneous stationary states such as those observed in models with slow-to-start (STS) rules [18] like the Takayasu–Takayasu model [19], Benjamin–Johnson–Hui model [20] and VDR model [15]. Here, for intermediate and high densities, the system divides into two distinct phases: a large compact jam with dominantly short headways, and a free-flow region with large headways. Within the jammed state, one observes strong short-range correlations due to the higher likelihood that the site adjacent to a standing car is also occupied by a stationary vehicle. In these cases, COMF becomes only an approximation [18] since it would incorrectly assume that the headways are randomly distributed. The simplest approach to capture correlations between neighboring cars, relevant in this case, is arguably incorporating the velocity of the vehicle immediately ahead. This allows for accounting for some short-range correlations. In the following we develop such an approach which will then be applied to the VDR model with vmax = 1 and parallel dynamics.  
+
+> ‡COMF can be interpreted by mapping of the TASEP to a zero-range process (ZRP) [16], which admits a factorized steady state [17].
+
+An improved car-oriented mean-field theory for stochastic traffic flow models 3
+
+2. The Velocity-Dependent-Randomization Model 
+
+We consider a one-dimensional lattice with L sites and N vehicles. The density ρ = N/L 
+
+of vehicles is conserved for the case of periodic boundary conditions. The original NaSch model is defined by the set of four rules, (NaSch 1)–(NaSch 4), which are applied in order and synchronously to all vehicles in a given configuration at time t to obtain the next configuration at time t + 1. The VDR model extends this framework by introducing an additional rule, (VDR 0), in which the braking probability assigned to a vehicle depends on its velocity at the end of the previous update [15]. This assigned probability is then used in the subsequent random-braking step, (NaSch 3). For completeness, we list the five update rules of the VDR model with vmax = 1. (VDR 0) Determination of the randomization parameter . The random braking parameter of the car with velocity v is given by 
+
+p(v) = 
+
+(p0 if v = 0 ,p if v = 1 . (1) (NaSch 1) Acceleration . The car is accelerated to velocity 1. (NaSch 2) Deceleration . If the car’s headway is zero, then the car becomes stationary, i.e. v = 0. (NaSch 3) Random-braking (randomization) . The car is subject to stochastic braking with probability p(v) determined in step (VDR 0), i.e. if the car has velocity 1 after step (NaSch 2) then its velocity is reduced to v = 0 with probability p(v). (NaSch 4) Movement . If the car has velocity v = 1 after step (NaSch 3), then it moves forward by one site. We note that for p0 = p, these rules are identical to those of the NaSch model. Fig. 1 illustrates a parallel update of the VDR model with vmax = 1 and with p = 0, p0 > 0.          
+
+> 1234512345
+
+Figure 1: A parallel update of the VDR model on a lattice of length L = 10 with N = 5 cars in the limit p = 0, p0 > 0. Black (white) circles denote cars with velocity 1 (0). The configuration at time t (left) leads to the configuration at time t + 1 (right) if car 2 stochastically restarts and car 5 stochastically remains stationary. 
+
+3. The improved Car-Oriented-Mean-Field (iCOMF) Theory 
+
+Instead of a conventional site-oriented description of the system configurations, based on occupation numbers as the dynamical variables, we adopt here a car-oriented description based on the headway ni(t), i.e. the number of empty cells in front of car i, and its An improved car-oriented mean-field theory for stochastic traffic flow models 4velocity vi(t) which fully describes the configuration of the system §. We recall that the COMF theory ignores correlations between the velocities and headways of cars in front, assuming a factorized steady state of the form 
+
+P ({ni; vi}) ∼
+
+> N
+
+Y
+
+> i=1
+
+P (ni; vi). (2) For the VDR model with vmax = 1 and general braking probabilities p0 and p, COMF theory is not exact [21]. Therefore we extend it by additionally incorporating the velocity of the vehicle immediately ahead. This allows the theory to capture short-range correlations between neighbouring vehicles while retaining the analytical structure of the COMF theory. The improved COMF theory (iCOMF) can be represented as a product state over nearest-neighbor pairs of cars 
+
+P ({ni; vi}) ∼
+
+> N
+
+Y
+
+> i=1
+
+P (ni; vi, v i+1 ), (3) and treats consecutive pairs of cars i and i + 1, with velocities vi and vi+1 , separated by a distance ni, in an exact manner. These pairs are then coupled to the rest of the system in a self-consistent fashion. To achieve this, one needs to formulate the master equation for the probability distribution of finding exactly n empty sites between a car with velocity u and the car immediately ahead with velocity v. This probability is denoted by P (n; u, v, t ) = Puv (n, t ). We introduce the conditional probabilities gv (¯ gv)that a car moves (does not move) at the end of the update started at time t, given that its velocity at time t is v = 0 , 1: 
+
+gv(t) = 
+
+ 1 − p(v)
+
+Pv(t)
+
+> ∞
+
+X
+
+> n=1
+
+X
+
+> v′=0 ,1
+
+Pvv ′ (n, t ) = 
+
+
+
+1 − p(v)
+
+ 
+
+1 − Pv0(0 , t )
+
+Pv(t)
+
+
+
+, (4) ¯gv(t) = 1 − gv(t), (5) where Pv(t) is the probability of finding a car with velocity v at time tPv(t) = 
+
+> ∞
+
+X
+
+> n=0
+
+X
+
+> v′=0 ,1
+
+Pvv ′ (n, t ). (6) A schematic representation of the master equation governing the time evolution of 
+
+P10 (n, t ) is shown in Fig. 2. A configuration at time t + 1 (right) in which the following car has velocity 1 and headway n, while the leading car has velocity 0, can only arise from configurations at time t (left) where the following car has velocity u = 0 , 1 and headway n + 1, and the leading car has velocity v = 0 , 1. The transition occurs when  
+
+> §More precisely, the position for one car has to be tracked for a full mapping. However, the stationary state for periodic boundary conditions is translational invariant so that this information is not essential.
+
+An improved car-oriented mean-field theory for stochastic traffic flow models 5
+
+· · ·      
+
+> uv
+> 1−p(u)¯gv
+> n+ 1
+
+· · · 
+
+> n
+
+Figure 2: Schematic of the master equation for P10 (n, t +1). It evolves from Puv (n+1 , t )if the leading car does not move (with probability ¯ gv) and the following car moves one step (with probability 1 − p(u)). This is the only transition leading to P10 (n, t + 1). the following car moves with probability 1 − p(u) and the leading car remains stationary with probability ¯ gv, which leads to 
+
+P10 (n, t + 1) = X
+
+> u=0 ,1
+
+X
+
+> v=0 ,1
+
+ 1 − p(u)¯gv(t)Puv (n + 1 , t ), n ≥ 0. (7) In the stationary state, the probabilities Pu,v (n, t ) become time-independent and are obtained by solving an infinite set of nonlinear master equations. The details of the calculation are provided in Appendix A. Throughout this work we compare our results with those obtained using the original COMF theory. A summary of this calculation can be found in Appendix B. 
+
+4. The Cruise-Control Limit and Phase-Separated States 
+
+For traffic flow applications, one is mainly interested in the slow-to-start (STS) regime where p0 > p . A particularly interesting case is when the a moving car can only slow down in the deceleration step (NaSch 2), i.e. due to insufficient headway, and not by randomization i.e. p = 0 and 0 < p 0 < 1. We note that for vmax = 1, this limit of the VDR model corresponds to the cruise-control limit of the NaSch model [22]. In this regime, the fundamental diagram has the so-called inverse lambda shape and metastable states are observed in computer simulations within a well defined density interval ρ1 < ρ ≤ ρ2, where the steady state current is not uniquely determined and depends on the initial configuration of the system. The flow-density relationship determined with COMF theory (B.19) and with iCOMF theory (A.26) coincide and is given explicitly by 
+
+J(ρ) = 
+
+(ρ if 0 ≤ ρ ≤ 1/2(1 − p0)(1 − ρ) if 1−p0 
+
+> 2−p0
+
+≤ ρ ≤ 1 . (8) This expression includes the metastable free-flow branch and allows us to identify 
+
+ρ1 = 1−p0 
+
+> 2−p0
+
+and ρ2 = 12 . The result (8) is in very good agreement with simulation data as shown in Fig. 3a. In this limit, the COMF result for the zero-headway distributions 
+
+Pv(0) (COMF) , i.e. the probability of finding exactly zero empty sites in front of car with An improved car-oriented mean-field theory for stochastic traffic flow models 6velocity v = 0 , 1 are given by 
+
+P0(0) (COMF) =
+
+ 2ρ − 1 + p0(1 − ρ)2
+
+ρ(ρ + p0(1 − ρ)) θ
+
+
+
+ρ − 1 − p0
+
+2 − p0
+
+
+
+, (9) 
+
+P1(0) (COMF) = (1 − p0)(1 − ρ)2ρ − 1 + p0(1 − ρ)P0(0) (COMF) , (10) where the Heaviside function θ ensures that the expression vanishes below ρ1. The non-zero headway (for n ≥ 1) distributions can also be written explicitly and are given by 
+
+P (COMF) 0 (n) = 
+
+(0 if ρ ≤ ρ12ρ−1+ p0(1 −ρ)
+
+> p20(1 −ρ)
+
+  p0(1 −ρ)
+
+> ρ+p0(1 −ρ)
+
+n+1 if ρ1 < ρ , (11) 
+
+P (COMF) 1 (n) = 
+
+((1 − p0)pn−10 if ρ ≤ ρ11−p0
+
+> p20
+
+  p0(1 −ρ)
+
+> ρ+p0(1 −ρ)
+
+n+1 if ρ1 < ρ . (12) These results correspond to the stable solution of the master equation and are only in agreement with the simulations data in the free-flow phase ρ ≤ ρ1 (Fig. 3b and Fig. 4a) where each car has velocity 1, at least one empty site in front and moves deterministically. The reason for this is that in the free-flow phase the model can be mapped to a usual ZRP which implies that the COMF results (9)-(12) and are exact for ρ ≤ ρ1.0.0 0.2 0.4 0.6 0.8 1.0 Density 0.0 0.1 0.2 0.3 0.4 0.5 Current      
+
+> (a)
+> 0.0 0.2 0.4 0.6 0.8 1.0 Density 0.0 0.2 0.4 0.6 0.8 1.0 Probability
+> (b)
+
+Figure 3: (a) Fundamental diagram and (b) zero-headway distribution of a stationary car with p0 = 0 .5 and p = 0. The triangular (rectangular) markers denote simulations data with homogeneous (jammed) initial conditions. They are compared with stable and metastable theoretical results. In (a) COMF and iCOMF results coincide and are represented as continuous line. In (b) COMF and iCOMF results are represented by a yellow dashed line and blue continuous line, respectively. They only coincide in the free-flow regime. An improved car-oriented mean-field theory for stochastic traffic flow models 70.0 0.2 0.4 0.6 0.8 1.0 Density 0.000 0.025 0.050 0.075 0.100 0.125 0.150 0.175 Probability      
+
+> (a)
+> 0.0 0.2 0.4 0.6 0.8 1.0 Density 0.0 0.1 0.2 0.3 0.4 0.5 Probability
+> (b)
+
+Figure 4: Headway distribution of a moving car in the cruise-control limit with p0 = 0 .5, 
+
+p1 = 0: (a) 0-headway distribution and (b) non-zero headway distributions (1-headway and 2-headway from top to bottom) are shown. Computer simulations with a jammed initial configuration (markers) are compared with COMF (yellow dashed lines) and iCOMF results (continuous lines). In the congested phase, the steady state consists of a single mega-jam of stationary cars coexisting with a free-flow region, in which cars moves at velocity one with at least one empty site in front. As expected, COMF fails to account for correlations responsible for such inhomogeneous steady state configurations and underestimates the weight of stationary cars inside a jam (Fig. 3b). Another aspect that highlights the limitations of COMF in the congested phase can be seen in the distributions (10) and (12). The mega-jam is either a cluster of cars starting with a car with velocity 0 or 1 i.e. a local configuration the form ”e0. . . 0e” or ”e10. . . 0e” (here ”e” denotes empty sites and ”0” (”1”) denotes sites occupied by a stationary (moving) car), while the free flow phase has local states in the form ”e1e. . . e1e”. Clearly the states ”10” and ”0e. . . e1” can only occur at most once in this phase separated configuration (with finite system size) and their weight must identically vanish in the thermodynamic limit. The COMF distributions (10) and (12) fails to capture this. We note that it is rather interesting that COMF fails to describe the headway distributions but captures the correct fundamental diagram, which, owing to (B.11), is expressed in terms of both zero-headway distributions alone. This partial agreement could be attributed to the fact that, in this cruise-control limit, many different configurations leads to the same flow. This behavior has also been observed previously in COMF for the NaSch model with vmax = 2, in the deterministic limit [23]. On the other hand, using the iCOMF theory, the zero-headway distributions, together with the GOE distributions P01 (0) = P11 (0) = 0, can also be obtained explicitly An improved car-oriented mean-field theory for stochastic traffic flow models 8and are given by 
+
+P00 (0) (iCOMF) = 2ρ − 1 + p0(1 − ρ)
+
+ρ θ
+
+
+
+ρ − 1 − p0
+
+2 − p0
+
+
+
+, (13) 
+
+P10 (0) (iCOMF) = 0 . (14) Furthermore, the non-zero headway distributions for all n ≥ 1 are given by 
+
+P00 (n)(iCOMF) = 0 , (15) 
+
+P01 (n)(iCOMF) = P10 (n)(iCOMF) = 0 , (16) 
+
+P11 (n)(iCOMF) =
+
+((1 − p0)pn−10 if ρ ≤ ρ11−ρρ (1 − p0)2pn−10 if ρ1 < ρ . (17) These iCOMF headway distributions are in excellent agreement with computer simulations across all densities as shown in Fig. 3b and Fig. 4. We note that, as discussed above, the only configurations that survive in the congested regime are stationary cars immediately behind another stationary car, and moving cars separated from a moving car ahead by at least one empty site. All other configurations must vanish in the thermodynamic limit, a feature correctly captured by the iCOMF headway distributions. We note that for ρ ≤ ρ1, the iCOMF headway distributions (13)-(17) recovers the exact results (9)-(12). We also note that in the cruise-control limit the VDR model becomes fully deterministic throughout the free-flow phase, which leads to non-unique the stationary states. The solution given in (12) and (17) for ρ ≤ ρ1 corresponds to the headway distributions that can be obtained from computer simulations starting with a jammed initial configuration. We can see in Fig. 4 that the excellent agreement between the iCOMF headway distributions and simulation data extends also to the non-zero headway distributions (15)-(17). We also note the average distance between cars in the free-flow region is given by ∆ x = 1 + (1 − p0)−1 [15, 24], i.e. the average headway is ⟨n⟩ = (1 − p0)−1. This result is not captured by the COMF distribution in (12), but is recovered by the iCOMF P11 (n) distribution in (17). 
+
+5. The General Model ( p > 0)
+
+Unlike the cruise-control limit, where COMF seems to produce the exact fundamental diagram despite failing to describe the headway distributions in the congested regime, for the case p > 0 this ”error cancellation” no longer holds and the fundamental diagram given by COMF deviates from the results of computer simulations (Fig. 5), especially around the maximal current density. In the STS regime, due to tendency towards phase separation, the microscopic configurations are inhomogeneous. For instance, at intermediate and high densities, a blocked stationary car is likely to have another such car in front. These correlations cannot be captured by COMF which underestimates zero-headway distributions, and consequently overestimates the flow. Taking into account the velocity of the car ahead, iCOMF accounts for the relevant correlations An improved car-oriented mean-field theory for stochastic traffic flow models 90.0 0.2 0.4 0.6 0.8 1.0 Density 0.00 0.05 0.10 0.15 0.20 Current      
+
+> (a)
+> 0.0 0.2 0.4 0.6 0.8 1.0 Density 0.00 0.05 0.10 0.15 0.20 0.25 Current
+> (b)
+
+Figure 5: Generic fundamental diagrams in the STS regime with p0 = 0 .5, p = 0 .1 (a) and FTS regime with p0 = 0 .1, p = 0 .5 (b). Comparison between iCOMF (solid blue lines), COMF (yellow dotted lines) and computer simulations (markers) are shown. and shows excellent agreement with computer simulations for the fundamental diagram (Fig. 5b) and also for the headway distributions as shown in Fig. 6b and Fig. 7b. We note here that although it not a physically relevant regime, for the fast-to-start (FTS) regime p0 < p , the headway distributions cannot be described by COMF either as the states remain inhomogeneous. For instance, computer simulations indicate that at high densities for the case p0 = 0 and p > 0, starting from a jammed configuration, the system evolves into a configuration consisting of a ”mega jam” in the form ”e10...0e” and the rest of the lattice exhibits a repeating ”e10e” pattern, i.e. a somewhat different phase separated state compared to the STS regime. In this regime, COMF underestimates the probability of a car joining a stopped vehicle ahead and underestimates the flux whereas iCOMF can adequately capture the correlations for intermediate and high densities as we observe excellent agreement between the iCOMF fundamental diagram and computer simulations (Fig. 5a). Finally, the headway distributions of the general model are also in excellent agreement with computer simulations as shown in Fig. 6 and Fig. 7. This suggests that iCOMF theory may even be an exact description of the VDR model with vmax = 1. 
+
+6. Summary and Discussion 
+
+We have introduced an analytical method to describe the stationary states of single-lane stochastic cellular automaton models of traffic flow. The original COMF theory is a true mean-field theory for the headway n of car with velocity v. It has previously been applied successfully to the NaSch model where it becomes exact for the case 
+
+vmax = 1. For vmax > 1 or for its simple generalizations, such as the VDR model, even for vmax = 1, the particle-hole symmetry is broken and COMF only yields approximate An improved car-oriented mean-field theory for stochastic traffic flow models 10 0.0 0.2 0.4 0.6 0.8 1.0 Density 0.0 0.2 0.4 0.6 0.8 1.0 Probability      
+
+> (a)
+> 0.0 0.2 0.4 0.6 0.8 1.0 Density 0.0 0.2 0.4 0.6 0.8 1.0 Probability
+> (b)
+
+Figure 6: 0-headway distributions in the generic case: (a) STS regime with p0 = 0 .5, 
+
+p = 0 .1 and (b) FTS regime with p0 = 0 .1, p = 0 .5. iCOMF results for P00 (0) ( P10 (0)) is shown in blue (red) continuous lines. They are compared with computer simulations represented with markers. 0.0 0.2 0.4 0.6 0.8 1.0 Density 0.00 0.02 0.04 0.06 0.08 0.10 0.12 0.14 Probability      
+
+> (a)
+> 0.0 0.2 0.4 0.6 0.8 1.0 Density 0.00 0.05 0.10 0.15 0.20 0.25 0.30 Probability
+> (b)
+
+Figure 7: 1-headway distributions in the generic case: (a) STS regime with p0 =0.5, p = 0.1 and (b) FTS regime with p0 = 0.1, p = 0.5. iCOMF results for 
+
+P00 (1) , P 10 (1) , P 01 (1) , P 11 (1) are shown as continuous blue, red, green and orange, respectively, and are compared with computer simulations (markers). results. Here we have extended the approach by taking into account the velocity of the car immediately in front to capture additional correlations, and have exemplified this extension for the VDR model with vmax = 1. This is done so to especially capture the correlations that are relevant to inhomogeneous steady states, such as the phase-separated configurations of the STS regime, which are relevant for traffic applications and are not well described by the original COMF. An improved car-oriented mean-field theory for stochastic traffic flow models 11 The corresponding master equations of the iCOMF theory, are solved analytically using a generating function approach. The resulting fundamental diagram and headway distributions are in excellent agreement with computer simulations for all values of the model parameters p0 and p and across all density range, including intermediate and high densities dominated by inhomogeneous configurations. Therefore, unlike for the NaSch model with vmax = 1, where the steady state factorizes and consecutive cars are uncorrelated, for the VDR model with vmax = 1 the correlations between consecutive cars are relevant, especially at intermediate and high densities. The inhomogeneous states seem to appear due to correlation between a car’s local headway and velocity configuration and the velocity of the car immediately ahead. In the cruise-control limit of the VDR model with vmax = 1 ( p = 0), where a moving car can only slow down due to insufficient number of empty sites ahead, we obtained explicit solutions of both the COMF and iCOMF master equations. In this limit, phase separation appears in its strongest form: a mega-jam coexisting with a free-flow region. Although both approaches reproduce the stable and metastable branches of the fundamental diagram, we have shown that the COMF results are only exact below the density 1−p0 
+
+> 2−p0
+
+. Above this density, the excellent agreement between the fundamental diagram obtained with the COMF and computer simulations is largely coincidental: the COMF headway distributions fail to capture the underlying phase-separated structure. By contrast, we have shown that iCOMF reproduces these inhomogeneous steady states. It would be desirable to clarify, using iCOMF theory, whether metastable states exist in the general slow-to-start case where 0 < p < p 0 ≤ 1. In this regime, computer simulations do not indicate the presence of metastable states, but we believe this may be attributed to their very short lifetime due to fluctuations. On the other hand, for 
+
+vmax > 1, computer simulations are able to capture metastable states and it is therefore also of considerable interest to apply the iCOMF theory for vmax > 1 and examine whether metastable states of the VDR model with a longer interaction range can be described analytically. In light of these arguments, the results of the iCOMF theory for the VDR model with vmax = 1 may, in fact, be exact. We also note, the iCOMF theory yields excellent agreement for other models in the slow-to-start cellular automaton class (Takayasu–Takayasu [19] and Benjamin–Johnson–Hui [20] model), and even for the original NaSch models with longer interaction range vmax > 1. These findings will be presented in forthcoming publications [25]. 
+
+Appendix A. Solution of iCOMF master equations 
+
+We define Puv (n, t ) the probability of finding exactly n empty sites between a car with velocity u and the car immediately ahead with velocity v. In the thermodynamic limit, An improved car-oriented mean-field theory for stochastic traffic flow models 12 the iCOMF master equation for the steady state are given by 
+
+P00 (0) = ¯ g0 [P00 (0) + P10 (0)] , (A.1) 
+
+P00 (n) = ¯ g0 [p0P00 (n) + pP 10 (n)] + ¯ g1 [p0P01 (n) + pP 11 (n)] , ∀n ≥ 1, (A.2) 
+
+P01 (0) = 0 , (A.3) 
+
+P01 (1) = g0(P00 (0) + P10 (0)) , (A.4) 
+
+P01 (n) = g0 [p0P00 (n − 1) + pP 10 (n − 1)] + g1 [p0P01 (n − 1) + pP 11 (n − 1)] , ∀n ≥ 2, (A.5) 
+
+P10 (n) = ¯ g0 [(1 − p0)P00 (n + 1) + (1 − p)P10 (n + 1)] + ¯ g1 [(1 − p0)P01 (n + 1) + (1 − p)P11 (n + 1)] , ∀n ≥ 0, (A.6) 
+
+P11 (0) = 0 , (A.7) 
+
+P11 (n) = g0 [(1 − p0)P00 (n) + (1 − p)P10 (n)] + g1 [(1 − p0)P01 (n) + (1 − p)P11 (n)] , ∀n ≥ 1, (A.8) where the conditional probabilities gv are given by (4). We note that P01 (0) and P11 (0) both vanish due to representing Garden-of-Eden states [12]. The system of equations (A.1)–(A.8) can be solved by generating functions [14], we introduce 
+
+Fuv (z) = 
+
+> ∞
+
+X
+
+> n=0
+
+Puv (n)zn+1 , u, v ∈ { 0, 1}, (A.9) 
+
+F (z) = X
+
+> u=0 ,1
+
+X
+
+> v=0 ,1
+
+Fuv (z). (A.10) For a fixed pair u, v multiplying each equation in (A.1)–(A.8) by zn+1 and summing over all n ≥ 0 leads to a linear system of equations in Fuv and we obtain the expressions: 
+
+F11 (z) = g0
+
+g1 − (g1 − g0)p0
+
+ (1 − p0)P00 (0) + (1 − p)P10 (0) z2
+
+[¯ g1 + ( g1 − g0)p][1 − ¯g0p0 − g0p] − z[g1 − (g1 − g0)p0][¯ g1p0 + g1p], (A.11) 
+
+F10 (z) = z−1 ¯g1 + p(g1 − g0)
+
+g1 − p0(g1 − g0)F11 (z), (A.12) 
+
+F01 (z) = ¯g1 + p(g1 − g0)
+
+g1 − p0(g1 − g0)F11 (z), (A.13) 
+
+F00 (z) = ¯g0(¯ g1 + p(g1 − g0)) − z(g1 − g0)( p0 ¯g1 + pg 1)
+
+zg 0(g1 − p0(g1 − g0)) F11 (z). (A.14) We define the shorthand notations a = P00 (0) and b = P10 (0). Using (4) and the fact that the conditions 
+
+F (1) = 1 , P0 = F00 (1) + F01 (1) , (A.15) An improved car-oriented mean-field theory for stochastic traffic flow models 13 must be satisfied, we find 
+
+P0 = p + (1 − p0)a + (1 − p)b
+
+1 + p − p0
+
+, (A.16) 
+
+g0 = (1 − p0) p(1 − a) + (1 − p)bp + (1 − p0)a + (1 − p)b, (A.17) 
+
+g1 = (1 − p)(1 − p0)( a − 1) + (2 − p0)b
+
+(1 − p0)( a − 1) + (1 − p)b . (A.18) The generating functions (A.11)–(A.14) can now be expressed solely in terms of the two free variables a and b.Fixing a and b requires two independent relations. Let s = a + b be the total zero-headway probability. Using (A.1) we have 
+
+a = s(1 − g0), b = sg 0, (A.19) and the equation (A.17) becomes 
+
+s = p(¯ g0 − p0)
+
+p(1 − p0) + g20 (p0 − p). (A.20) The last relation is given by the density condition F ′(1) = 1 
+
+> ρ
+
+and leads to 0 = (2 ρ − 1)( p0 − p)g30
+
++ (1 − p0)( p0 − p) + ρ  p20 − 2p0p − 2p0 + 3 p g20
+
+− (1 − p0)pg 0 + (1 − ρ)p(1 − p0)2.
+
+(A.21) Therefore, the problem reduces to finding the roots g0 of this cubic, from which the zero-headway probabilities follow via (A.19)–(A.20), along with all remaining quantities. The headway distributions P11 (n), for all n ≥ 1 are given by 
+
+P11 (n) = g0
+
+a(1 − p0) + b(1 − p)
+
+¯g1p0 + g1p
+
+ (g1 − (g1 − g0)p0)(¯ g1p0 + g1p)(¯ g1 + ( g1 − g0)p)(1 − ¯g0p0 − g0p)
+
+n
+
+. (A.22) All the remaining ones for n ≥ 0, follow as 
+
+P01 (n) = ¯g1 + p(g1 − g0)
+
+g1 − p0(g1 − g0)P11 (n), (A.23) 
+
+P10 (n) = ¯g1 + p(g1 − g0)
+
+g1 − p0(g1 − g0)P11 (n + 1) , (A.24) 
+
+P00 (n) = ¯g0
+
+ ¯g1 + p(g1 − g0)P11 (n + 1) − (g1 − g0)( p0 ¯g1 + pg 1)P11 (n)
+
+g0(g1 − p0(g1 − g0)) . (A.25) Finally, the fundamental diagram is given by 
+
+J(c) = ρ X
+
+> v=0 ,1
+
+gvPv = ρ
+
+
+
+1 − p + ( p − p0)P0 − (1 − p0)a − (1 − p)b
+
+
+
+. (A.26) An improved car-oriented mean-field theory for stochastic traffic flow models 14 
+
+Appendix B. Solution of COMF master equations 
+
+We define Pv(n, t ) the probability of finding exactly n empty sites in front of a car with velocity v at time t. In the thermodynamic limit, the COMF master equation for the steady state are given by [21]: 
+
+P0(0) = ¯ g [P0(0) + P1(0)] , (B.1) 
+
+P0(1) = ¯ g [p0P0(1) + pP 1(1)] + g [P0(0) + P1(0)] , (B.2) 
+
+P0(n) = ¯ g [p0P0(n) + pP 1(n)] + g [p0P0(n − 1) + pP 1(n − 1)] , ∀n ≥ 2, (B.3) 
+
+P1(0) = ¯ g [(1 − p0)P0(1) + (1 − p)P1(1)] , (B.4) 
+
+P1(n) = ¯ g [(1 − p0)P0(n + 1) + (1 − p)P1(n + 1)] + g [(1 − p0)P0(n) + (1 − p)P1(n)] , ∀n ≥ 1, (B.5) where 
+
+g = X
+
+> v=0 ,1
+
+(1 − p(v)) 
+
+> ∞
+
+X
+
+> n=1
+
+Pv(n) (B.6) is the probability for a car to move one site. The system of equations (B.1)–(B.5) can be solved similarly to Appendix A. For v = 0 , 1 we define 
+
+Fv(z) = 
+
+> ∞
+
+X
+
+> n=0
+
+zn+1 Pv(n), (B.7) 
+
+F (z) = F1(z) + F0(z) = 
+
+> ∞
+
+X
+
+> n=0
+
+zn+1 P (n), (B.8) and obtain 
+
+F0(z) = ¯gz (¯ g + gz )
+
+
+
+(1 − p0)P0(0) + (1 − p)P1(0) 
+
+
+
+(¯ g + gz )(1 − p0 ¯g − pg ) − gz , (B.9) 
+
+F1(z) = g
+
+¯g F0(z), (B.10) with ¯ g = 1 − g. The conservation of probability i.e. F (z = 1) = 1 leads to 
+
+g = (1 − p0) 1 − P0(0)  − (1 − p)P1(0) 1 + p − p0
+
+. (B.11) The problem now reduces to determining P0(0) and P1(0) which requires two relations between these quantities. The first of these is the global density condition 
+
+F ′(z = 1) = 1 
+
+> ρ
+
+and reads: [P0(0)(1 − p0) + P1(0)(1 − p)][¯ g(1 + g − p0) − gp ][¯ g(1 − p0) − gp ]2 = 1
+
+ρ. (B.12) An improved car-oriented mean-field theory for stochastic traffic flow models 15 The second is simply the equation (B.1). Using (B.11) these two equations become quadratic in P0(0) , P 1(0) and have to be solved simultaneously. Using P (0) = P0(0) + 
+
+P1(0), the latter can be expressed as 
+
+P0(0) = P (0)  p + P (0)(1 − p)
+
+1 + p − p0 + P (0)( p0 − p), (B.13) 
+
+P1(0) = P (0) − P0(0) = P (0)(1 − p0)(1 − P (0)) 1 + p − p0 + P (0)( p0 − p), (B.14) substituting in (B.12) leads to the quadratic relation for P (0) 
+
+ − ρ + p0(ρ − 1) + pP (0) 2 + (2 − p − p0)c − 1 + p0 − pP (0) + pρ = 0 . (B.15) Solving (B.15) and, using (B.13), the headway distributions for n ≥ 1 is obtained through 
+
+P0(n) = g[(1 − p0)P0(0) + (1 − p)P1(0)] [(1 − p0)¯ g + (1 − p)g]2
+
+g
+
+¯gp0 ¯g + pg 
+
+(1 − p0)¯ g + (1 − p)g
+
+n−1
+
+, (B.16) 
+
+P1(n) = g
+
+¯g P0(n). (B.17) The fundamental diagram can be explicitly calculated using g = P1(0)   
+
+> P(0)
+
+and re-writing (B.15) as 
+
+ρg 2 −  1 + ( p0 − p)( ρ − 1) g − (1 − p0)( ρ − 1) = 0 , (B.18) from which we obtain 
+
+J±(ρ) = ρg ± = 12
+
+
+
+1 + ( p0 − p)( ρ − 1) ± p(1 + ( p0 − p)( ρ − 1)) 2 + 4 ρ(1 − p0)( ρ − 1) 
+
+
+
+.
+
+(B.19) 
+
+Artificial Intelligence Disclosure Statement 
+
+During the preparation of this manuscript, we acknowledge the use of Large Language Models (LLMs), namely Claude (models: Opus 4 and 5, Anthropic) and ChatGPT (models: GPT-4 and GPT-5, OpenAI). These assisted with improving clarity of some parts of the text through grammar and spelling corrections, with developing and debugging codes for computer simulations, and with checking parts of the analytical calculations already carried out by the authors. The authors take full responsibility and ownership of the work presented in this paper. 
+
+References    
+
+> [1] D. Chowdhury, L. Santen, and A. Schadschneider. Statistical physics of vehicular traffic and some related systems. Physics Reports , 329:199–329, 2000. [2] A. Schadschneider, D. Chowdhury, and K. Nishinari. Stochastic Transport in Complex Systems. From Molecules to Vehicles .Elsevier, 2010.
+
+An improved car-oriented mean-field theory for stochastic traffic flow models 16 
+
+[3] J. Esser and M. Schreckenberg. Microscopic simulation of urban traffic based on cellular automata. 
+
+Int. J. Mod. Phys. C , 8:1025, 1997. [4] K. Nagel, J. Esser, and M. Rickert. Large-scale traffic simulation for transportation planning. 
+
+Annual Reviews of Computational Physics , 7:151, 2000. [5] J. Wahle, L. Neubert, J. Esser, and M. Schreckenberg. A cellular automaton traffic flow model for online simulation of traffic. Parallel Comp. , 27:719, 2001. [6] D. Chowdhury, J. Kertesz, K. Nagel, L. Santen, and A. Schadschneider. Comment on ”Critical behavior of a traffic flow model”. Phys. Rev. E , 61:3270, 2000. [7] L. Roters, S. L¨ ubeck, and K.D. Usadel. Reply to comment on ”Critical behavior of a traffic flow model”. Phys. Rev. E , 61:3272, 2000. [8] K. Nagel and M. Schreckenberg. A cellular automaton model for freeway traffic. Journal de Physique I , 2:2221, 1992. [9] B. Derrida. An exactly soluble non-equilibrium system: The asymmetric simple exclusion process. 
+
+Physics Reports , 301(1):65–83, 1998. [10] G.M. Sch¨ utz. Exactly solvable models for many-body systems far from equilibrium. Phase Transitions and Critical Phenomena , 19:1, 2000. [11] M.R. Evans and R.A. Blythe. Nonequilibrium dynamics in low-dimensional systems. Physica A ,313:110, 2002. [12] A. Schadschneider and M. Schreckenberg. Garden of Eden states in traffic models. J. Phys. A ,31:L225, 1998. [13] M. Schreckenberg, A. Schadschneider, K. Nagel, and N. Ito. Discrete stochastic models for traffic flow. Phys. Rev. E , 51:2939, 1995. [14] A. Schadschneider and M. Schreckenberg. Car-oriented mean-field theory for traffic flow models. 
+
+J. Phys. A , 30:L69, 1997. [15] R. Barlovic, L. Santen, A. Schadschneider, and M. Schreckenberg. Metastable states in cellular automata for traffic flow. Eur. Phys. J. B , 5:793–800, 1998. [16] M.R. Evans and T. Hanney. Nonequilibrium statistical mechanics of the zero-range process and related models. J. Phys. A: Math. Gen. , 38:R195–R240, 2005. [17] F. Spitzer. Interaction of Markov processes. Adv. Math. , 5:246, 1970. [18] A. Schadschneider and M. Schreckenberg. Traffic flow models with ‘slow-to-start’ rules. Annalen der Physik , 509(7):541–551, 1997. [19] M. Takayasu and H. Takayasu. 1/f noise in a traffic model. Fractals , 1(4):860, 1993. [20] S.C. Benjamin, N.F. Johnson, and P.M. Hui. Cellular automata models of traffic flow along a highway containing a junction. J. Phys. A , 29:3119, 1996. [21] R. Barlovic. Exact stationary state for an ASEP with fully parallel dynamics. Diploma Thesis, Duisburg University , 1998. [22] K. Nagel and M. Paczuski. Emergent traffic jams. Phys. Rev. E , 51:2909, 1995. [23] A. Schadschneider. The Nagel-Schreckenberg model revisited. Eur. Phys. J. B , 10(3):573–582, 1999. [24] C. Appert and L. Santen. Boundary induced phase transitions in driven lattice gases with metastable states. Phys. Rev. Lett. , 86:2498–2501, 2001. [25] Y. Efe Dai, A. Schadschneider, and M. Schreckenberg. Applications of improved car-oriented-mean-field theories. In preparation, 2026.

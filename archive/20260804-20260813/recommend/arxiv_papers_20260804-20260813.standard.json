@@ -1,0 +1,516 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-13T07:33:20.963315+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 19,
+    "quick_skim_target": 11,
+    "quick_selected": 11
+  },
+  "deep_dive": [
+    {
+      "id": "2608.09082v1",
+      "source": "arxiv",
+      "title": "F2STNet: Fair and Federated Spectral-Temporal Modeling for Graph Forecasting",
+      "abstract": "Spatiotemporal prediction on graph-structured data is central to traffic forecasting and environmental monitoring, yet decentralized and heterogeneous data complicate both sequence modeling and collaborative training. We propose F$^2$STNet, a federated forecasting framework that combines truncated graph-Fourier features, a lightweight diagonal state-space temporal encoder, graph convolution, and Fairness-aware Federated Aggregation (FFA). The spectral branch exposes graph-frequency structure, while the state-space layer models long temporal dependencies with linear complexity in the sequence length. FFA adjusts the FedAvg prior using client validation losses and an increasing fairness schedule. Experiments on PeMS04, HZMetro, and KnowAir show favorable forecasting accuracy relative to the evaluated baselines; federated experiments on PeMS04 additionally improve worst-client and client-dispersion metrics.",
+      "authors": [
+        "Jiayi Zhang",
+        "Jinfeng Xu",
+        "Hewei Wang",
+        "Siyuan Cen",
+        "Haidong Huang",
+        "Yiyao Zhan",
+        "Zheyu Chen",
+        "Jinjiang You",
+        "Ai Jian",
+        "Edith C. H. Ngai"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-10T03:29:15+00:00",
+      "link": "https://arxiv.org/pdf/2608.09082v1",
+      "tags": [
+        "keyword:traffic-flow",
+        "query:traffic-flow"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Graph-based spatiotemporal forecasting evaluated on traffic flow datasets",
+      "llm_evidence_cn": "基于图的时空预测模型在交通流数据上验证",
+      "llm_evidence": "基于图的时空预测模型在交通流数据上验证",
+      "canonical_evidence": "基于图的时空预测模型在交通流数据上验证",
+      "llm_tldr_en": "F2STNet proposes a federated spatiotemporal graph forecasting framework combining spectral features, state-space encoding and fairness-aware aggregation; experiments on traffic flow, metro and air quality datasets show improved accuracy and fairness.",
+      "llm_tldr_cn": "针对联邦场景下图结构时空预测面临的数据异构与公平性问题，提出F2STNet框架。它利用图傅里叶特征提取光谱信息，用状态空间模型建模长程时间依赖，并通过公平感知聚合策略调节各客户端的贡献。在PeMS04交通流、HZMetro地铁和KnowAir空气质量数据上的实验表明模型有效兼顾精度与公平性。该工作为交通流等时空预测提供了一种联邦学习新方案。",
+      "llm_tldr": "针对联邦场景下图结构时空预测面临的数据异构与公平性问题，提出F2STNet框架。它利用图傅里叶特征提取光谱信息，用状态空间模型建模长程时间依赖，并通过公平感知聚合策略调节各客户端的贡献。在PeMS04交通流、HZMetro地铁和KnowAir空气质量数据上的实验表明模型有效兼顾精度与公平性。该工作为交通流等时空预测提供了一种联邦学习新方案。",
+      "llm_tags": [
+        "query:traffic-flow"
+      ],
+      "matched_query_tag": "query:traffic-flow",
+      "matched_query_text": "spatiotemporal deep learning for traffic forecasting",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.04157v1",
+      "source": "arxiv",
+      "title": "MINT: Tensor Decomposition on Stacked Recurrence Matrices for Time Series Data Mining",
+      "abstract": "Recurrence plots are a time series data mining primitive applied to a variety of domains (e.g. star light curves, sound waveforms, CCT telemetry). This work proposes tensorized self-similarity matrices as a primitive for univariate time series datasets ($N\\times n$) of $N$ time series of length $n$ with a subsequence window of length $m$, and whose tensor-based nature is naturally extensible to multivariate datasets. The proposed method to compute this primitive computes dot plots of size $N \\times (n-m+1) \\times (n-m+ 1)$ from these datasets, where the subsequent tensor is mined using tensor decomposition methods to mine for co-clustered patterns. We demonstrate our results in mass rapid transit, electricity demand, wind turbine, and car traffic data, finding the MINT pipeline effectively co-clusters cross-sensor patterns in highly regular datasets containing motifs at regular intervals.",
+      "authors": [
+        "Kaamil Kaka",
+        "Audrey Der",
+        "Evangelos E. Papalexakis",
+        "Zachary Zimmerman",
+        "Vikram Jayaram"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-04T19:11:33+00:00",
+      "link": "https://arxiv.org/pdf/2608.04157v1",
+      "tags": [
+        "keyword:traffic-flow",
+        "query:traffic-flow"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Tensor decomposition on recurrence matrices for time series mining, demonstrated on mass rapid transit data",
+      "llm_evidence_cn": "用张量分解处理递归矩阵进行时间序列分析，并在快速轨道交通数据上验证",
+      "llm_evidence": "用张量分解处理递归矩阵进行时间序列分析，并在快速轨道交通数据上验证",
+      "canonical_evidence": "用张量分解处理递归矩阵进行时间序列分析，并在快速轨道交通数据上验证",
+      "llm_tldr_en": "Introduces tensorized self-similarity matrices and tensor decomposition for mining co-clustered patterns in time series, demonstrated on mass rapid transit, electricity demand, and wind turbine data.",
+      "llm_tldr_cn": "针对时间序列数据挖掘中模式发现的需求，该文提出张量化自相似矩阵作为统一原语，通过张量分解从堆叠递归矩阵中挖掘共聚簇模式。方法可扩展到多变量时间序列，并在快速轨道交通、电力负荷和风力发电等多个数据集上验证。该成果为交通流量时间序列的周期与关联模式分析提供了通用工具，能够高效处理大规模时间序列并发现重复出现的结构模式。",
+      "llm_tldr": "针对时间序列数据挖掘中模式发现的需求，该文提出张量化自相似矩阵作为统一原语，通过张量分解从堆叠递归矩阵中挖掘共聚簇模式。方法可扩展到多变量时间序列，并在快速轨道交通、电力负荷和风力发电等多个数据集上验证。该成果为交通流量时间序列的周期与关联模式分析提供了通用工具，能够高效处理大规模时间序列并发现重复出现的结构模式。",
+      "llm_tags": [
+        "query:traffic-flow"
+      ],
+      "matched_query_tag": "query:traffic-flow",
+      "matched_query_text": "analyzing time series of traffic flow measurements",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.03449v1",
+      "source": "arxiv",
+      "title": "Fast covariance-free spatiotemporal modeling via coarse-to-fine learning",
+      "abstract": "Scalable spatiotemporal modeling remains challenging because conventional methods rely on covariance models that tightly couple spatial representation and temporal inference, often leading to high computational costs. To address this difficulty, we developed coarse-to-fine spatiotemporal modeling (CF-STM), a framework that extends coarse-to-fine spatial modeling (CF-SM) to spatiotemporal settings. CF-STM represents latent spatial processes through multiscale locally weighted models, with temporal dependence modeled separately through state-space models defined at local centers. This covariance-free formulation achieves scalable computation while allowing temporal models to be flexibly specified without altering the spatial representation. Monte Carlo experiments demonstrate predictive performance comparable to that of alternative scalable space-time models at a substantially lower computational cost. An application to long-term residential land price data in the Tokyo metropolitan area shows that CF-STM flexibly captures complex spatiotemporal patterns while enabling interpretable inferences. CF-STM is implemented in an R package spCF (https://cran.r-project.org/web/packages/spCF/).",
+      "authors": [
+        "Daisuke Murakami"
+      ],
+      "primary_category": "stat.ME",
+      "categories": [
+        "stat.ME",
+        "stat.CO"
+      ],
+      "published": "2026-08-04T10:45:44+00:00",
+      "link": "https://arxiv.org/pdf/2608.03449v1",
+      "tags": [
+        "keyword:traffic-flow",
+        "query:traffic-flow"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Covariance-free spatiotemporal modeling framework applicable to traffic data",
+      "llm_evidence_cn": "适用于交通数据的无协方差时空建模框架",
+      "llm_evidence": "适用于交通数据的无协方差时空建模框架",
+      "canonical_evidence": "适用于交通数据的无协方差时空建模框架",
+      "llm_tldr_en": "Coarse-to-fine spatiotemporal modeling avoids covariance constraints by combining multiscale local spatial weights with local state-space temporal models, yielding scalable computation and flexible temporal specification for large-scale spatiotemporal data.",
+      "llm_tldr_cn": "针对高计算成本问题，提出无协方差由粗到细时空建模（CF-STM）。该方法用多尺度局部加权模型描述空间过程，并在局部中心以状态空间模型独立建模时间依赖，解耦空间与时间结构。模拟实验表明其在保持精度的前提下实现了更低的计算复杂度，同时允许灵活指定时间模型。该框架可扩展至交通流量等大规模时空预测任务。",
+      "llm_tldr": "针对高计算成本问题，提出无协方差由粗到细时空建模（CF-STM）。该方法用多尺度局部加权模型描述空间过程，并在局部中心以状态空间模型独立建模时间依赖，解耦空间与时间结构。模拟实验表明其在保持精度的前提下实现了更低的计算复杂度，同时允许灵活指定时间模型。该框架可扩展至交通流量等大规模时空预测任务。",
+      "llm_tags": [
+        "query:traffic-flow"
+      ],
+      "matched_query_tag": "query:traffic-flow",
+      "matched_query_text": "modeling spatial and temporal patterns in traffic data",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.03630v1",
+      "source": "arxiv",
+      "title": "POEM: Phase-Aware $\\mathrm{SO}(2)$ Feature Rotation for Time Series Forecasting Under Periodicity Drift",
+      "abstract": "Deep learning has advanced time series forecasting, but periodicity drift, in which cycle timing and phase vary over time, remains a challenging problem. Existing methods predominantly model these sequences on fixed time grids, suffering from a limited ability to accommodate phase-related variation. To address this limitation, we propose \\textbf{POEM}, a phase-aware forecasting framework based on latent feature rotation using the special orthogonal group in two dimensions, denoted by $\\mathrm{SO}(2)$. POEM aims to reduce the phase-related variability by learning a phase-correction coordinate and applying an invertible $\\mathrm{SO}(2)$-based rotation to paired latent features. To extrapolate this correction coordinate, Directional Phase Increment Attention (DPIA) retrieves historical phase increments from similar temporal contexts and integrates them into future phase corrections. Experiments demonstrate that POEM achieves competitive performance, while qualitative visualizations suggest that the learned phase-aware transformation makes latent trajectories more regular.",
+      "authors": [
+        "Jiawen Zhu",
+        "Shuhan Liu",
+        "Shengxuan Li",
+        "Qiming Shi",
+        "Di Weng"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-04T13:16:07+00:00",
+      "link": "https://arxiv.org/pdf/2608.03630v1",
+      "tags": [
+        "keyword:traffic-flow",
+        "query:traffic-flow"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Phase-aware deep time-series forecasting under periodicity drift; applicable to traffic flow time series with periodic patterns",
+      "llm_evidence_cn": "面向周期漂移的相位感知时间序列预测方法，适用于交通流时间序列分析",
+      "llm_evidence": "面向周期漂移的相位感知时间序列预测方法，适用于交通流时间序列分析",
+      "canonical_evidence": "面向周期漂移的相位感知时间序列预测方法，适用于交通流时间序列分析",
+      "llm_tldr_en": "Proposes POEM, a phase-aware forecasting framework using SO(2) latent feature rotation to handle periodicity drift in time series. General deep forecasting method relevant to traffic flow series.",
+      "llm_tldr_cn": "论文针对时间序列预测中周期时序与相位随时间漂移的问题，提出POEM框架，利用二维特殊正交群上的潜特征旋转学习相位校正坐标，并通过外推校正坐标来处理相位变化。相比固定时间网格建模，该方法能更灵活地适应周期漂移，提升预测效果。交通流具有明显周期和相位漂移，因此该方法对交通流预测有直接借鉴意义。",
+      "llm_tldr": "论文针对时间序列预测中周期时序与相位随时间漂移的问题，提出POEM框架，利用二维特殊正交群上的潜特征旋转学习相位校正坐标，并通过外推校正坐标来处理相位变化。相比固定时间网格建模，该方法能更灵活地适应周期漂移，提升预测效果。交通流具有明显周期和相位漂移，因此该方法对交通流预测有直接借鉴意义。",
+      "llm_tags": [
+        "query:traffic-flow"
+      ],
+      "matched_query_tag": "query:traffic-flow",
+      "matched_query_text": "analyzing time series of traffic flow measurements",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.04075v1",
+      "source": "arxiv",
+      "title": "Spatiotemporal Graph Transformer for Traffic Intelligence in Edge Computing",
+      "abstract": "Accurate traffic forecasting is essential for proactive resource management in edge computing, where service demand evolves dynamically across both space and time. In practical cellular edge systems, traffic exhibits strong spatial correlations among neighboring service regions and long-range temporal dependencies driven by user mobility and application behavior. Existing recurrent forecasting approaches can capture short-term dynamics but often struggle to model long-horizon traffic evolution under non-stationary conditions. To address this challenge, we propose a spatiotemporal graph Transformer framework that jointly models spatial interactions and temporal dependencies for traffic forecasting in edge computing. The framework employs graph neural networks to capture spatial correlations among service regions and leverages Transformer-based self-attention to learn long-range temporal patterns from historical traffic observations. By decoupling spatial representation learning from temporal reasoning, the proposed approach provides an effective mechanism for large-scale spatiotemporal traffic modeling. Extensive experiments on a real-world cellular network dataset demonstrate that the proposed graph Transformer consistently outperforms recurrent graph-based baselines, including GCN-RNN, GCN-LSTM, and GCN-GRU models, across multiple forecasting horizons. The resulting forecasts enable more effective proactive resource provisioning and reduce overload risk compared with reactive management strategies. These results highlight the potential of graph-enhanced attention mechanisms for building intelligent and adaptive edge computing systems.",
+      "authors": [
+        "Laha Ale",
+        "Letian Lin",
+        "Na Cao",
+        "Zheng Ma",
+        "Peng Yu"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-08-04T16:37:09+00:00",
+      "link": "https://arxiv.org/pdf/2608.04075v1",
+      "tags": [
+        "keyword:traffic-flow",
+        "query:traffic-flow"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "spatiotemporal graph Transformer and graph neural components for traffic forecasting",
+      "llm_evidence_cn": "面向流量预测的时空图Transformer，联合空间交互与时间依赖建模",
+      "llm_evidence": "面向流量预测的时空图Transformer，联合空间交互与时间依赖建模",
+      "canonical_evidence": "面向流量预测的时空图Transformer，联合空间交互与时间依赖建模",
+      "llm_tldr_en": "Proposes a spatiotemporal graph Transformer that jointly models spatial interactions and temporal dependencies for traffic forecasting in edge computing, capturing long-horizon non-stationary evolution.",
+      "llm_tldr_cn": "面向边缘计算中的流量预测问题，现有循环方法难以刻画长期非平稳演化。本文提出时空图Transformer，将图神经结构与注意力机制结合，联合建模服务区域的空间相关性和长时间依赖。该方法可提升长期流量预测质量，为边缘资源管理提供支持，其时空图建模思路也可迁移到道路交通流预测等任务。",
+      "llm_tldr": "面向边缘计算中的流量预测问题，现有循环方法难以刻画长期非平稳演化。本文提出时空图Transformer，将图神经结构与注意力机制结合，联合建模服务区域的空间相关性和长时间依赖。该方法可提升长期流量预测质量，为边缘资源管理提供支持，其时空图建模思路也可迁移到道路交通流预测等任务。",
+      "llm_tags": [
+        "query:traffic-flow"
+      ],
+      "matched_query_tag": "query:traffic-flow",
+      "matched_query_text": "traffic prediction with graph neural networks",
+      "matched_requirement_id": "req-9",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.06241v1",
+      "source": "arxiv",
+      "title": "Timestep-Conditioned Transformers for Global Weather Forecasting",
+      "abstract": "Existing machine-learning weather forecasting models rely on predetermined and fixed autoregressive timesteps. The choice of model timestep involves a fundamental trade-off: shorter timesteps (e.g. 1 to 6 hours) finely resolve atmospheric dynamics within the diurnal cycle but increase error accumulation for a given forecast horizon, while longer timesteps (e.g. 24 hours) reduce error accumulation but limit the usability of short-range forecasts where sub-daily predictability is high. In this work, we present GEM-3, a probabilistic global weather model that addresses this trade-off through explicit multi-timestep inference. With a single set of trained weights, the model timestep can be configured at inference time to balance predictability and usability across a broad forecast horizon. Additionally, we find that mixed-timestep training consistently improves rollout stability relative to timestep-specialist models. Under the hood, GEM-3 is a lightweight neighborhood-attention transformer with ~134M parameters on an equirectangular grid with a number of architectural advancements beyond its predecessor GEM-2. The result is a practical forecasting system that couples near-SOTA medium-range probabilistic skill, stable extended-range rollouts, efficient training and inference, and decision-relevant diagnostics.",
+      "authors": [
+        "Sam Levang",
+        "Fran Bartolic",
+        "Ty Dickinson",
+        "Chase Dwelle",
+        "Paulius Rauba",
+        "Viktor Cikojevic"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.OS"
+      ],
+      "published": "2026-08-06T16:27:54+00:00",
+      "link": "https://arxiv.org/pdf/2608.06241v1",
+      "tags": [
+        "keyword:traffic-flow",
+        "query:traffic-flow"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "spatiotemporal deep learning weather forecasting with flexible timesteps, transferable methodological bridge",
+      "llm_evidence_cn": "时间步条件Transformer的时空深度学习预测，方法可迁移至交通预测",
+      "llm_evidence": "时间步条件Transformer的时空深度学习预测，方法可迁移至交通预测",
+      "canonical_evidence": "时间步条件Transformer的时空深度学习预测，方法可迁移至交通预测",
+      "llm_tldr_en": "Presents GEM-3, a probabilistic global weather model with timestep-conditioned transformers, enabling flexible inference timesteps to balance error accumulation and resolution; relevant as a spatiotemporal deep learning forecasting method.",
+      "llm_tldr_cn": "针对气象预报中固定自回归时间步的困境，本文提出时间步条件Transformer的GEM-3模型，允许推理时配置模型时间步以权衡可预测性与短期可用性。该方法用同一套权重支持多时间步推断，兼顾短时精细与长时稳定。实验表明其能有效提升全球天气预报性能。该时空深度学习预测框架可启发交通流预测中的时间尺度选择问题。",
+      "llm_tldr": "针对气象预报中固定自回归时间步的困境，本文提出时间步条件Transformer的GEM-3模型，允许推理时配置模型时间步以权衡可预测性与短期可用性。该方法用同一套权重支持多时间步推断，兼顾短时精细与长时稳定。实验表明其能有效提升全球天气预报性能。该时空深度学习预测框架可启发交通流预测中的时间尺度选择问题。",
+      "llm_tags": [
+        "query:traffic-flow"
+      ],
+      "matched_query_tag": "query:traffic-flow",
+      "matched_query_text": "spatiotemporal deep learning for traffic forecasting",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.04471v1",
+      "source": "arxiv",
+      "title": "Beyond Linear Dynamics: Neural Bilinear Dynamical Models for Time Series Forecasting",
+      "abstract": "Time series in real-world applications are often generated by nonlinear dynamical systems, making accurate forecasting challenging. Existing approaches that explicitly model system dynamics typically rely on linear assumptions or Koopman-based linearizations, which may inadequately capture complex nonlinear behaviors and lead to error accumulation in long-horizon prediction. To address this limitation, we propose the Neural Bilinear Dynamical Model (NBDM), which models nonlinear system dynamics through a bilinear latent dynamical formulation. Specifically, NBDM leverages Koopman theory to lift the original nonlinear dynamics into a higher-dimensional latent space, where a bilinear dynamical model is constructed to characterize state evolution. To mitigate the approximation error introduced by bilinear representations, we further incorporate a parameterized error compensation term. Within this formulation, control inputs are explicitly integrated into the dynamics, using auxiliary variables when available and learned feedback signals otherwise. To handle scenarios with missing control inputs, we design a memory-enhanced controller that infers latent controls through multiplicative interactions between historical states and control signals. Experiments on five real-world datasets demonstrate that NBDM consistently outperforms competitive baselines in both given-control and missing-control settings, particularly for multi-step and long-horizon forecasting.",
+      "authors": [
+        "Mengzhou Gao",
+        "Huangqian Yu",
+        "Pengfei Jiao"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-08-05T05:54:17+00:00",
+      "link": "https://arxiv.org/pdf/2608.04471v1",
+      "tags": [
+        "keyword:traffic-flow",
+        "query:traffic-flow"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "neural bilinear dynamical model for nonlinear time-series forecasting, transferable to traffic flow",
+      "llm_evidence_cn": "面向非线性时间序列预测的神经双线性动力学模型，可迁移至交通流预测",
+      "llm_evidence": "面向非线性时间序列预测的神经双线性动力学模型，可迁移至交通流预测",
+      "canonical_evidence": "面向非线性时间序列预测的神经双线性动力学模型，可迁移至交通流预测",
+      "llm_tldr_en": "Proposes Neural Bilinear Dynamical Model (NBDM) using Koopman theory and bilinear latent dynamics for nonlinear time-series forecasting, a transferable method for traffic flow series.",
+      "llm_tldr_cn": "针对非线性动力系统时间序列预测中线性假设或Koopman线性化表达力不足的问题，本文提出神经双线性动力学模型NBDM。它结合Koopman理论将原动力系统提升到高维潜空间，并以双线性动态模型刻画状态演化，从而更好地捕捉复杂非线性行为。实验表明该方法在长时程预测上减少误差累积。该模型可迁移到交通流时间序列的长期预测中。",
+      "llm_tldr": "针对非线性动力系统时间序列预测中线性假设或Koopman线性化表达力不足的问题，本文提出神经双线性动力学模型NBDM。它结合Koopman理论将原动力系统提升到高维潜空间，并以双线性动态模型刻画状态演化，从而更好地捕捉复杂非线性行为。实验表明该方法在长时程预测上减少误差累积。该模型可迁移到交通流时间序列的长期预测中。",
+      "llm_tags": [
+        "query:traffic-flow"
+      ],
+      "matched_query_tag": "query:traffic-flow",
+      "matched_query_text": "analyzing time series of traffic flow measurements",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.06765v1",
+      "source": "arxiv",
+      "title": "LiFTER: A Grounded Neuro-Symbolic Microscope for Continuous-Time Dynamic Graph Forecasting",
+      "abstract": "Continuous-time dynamic graph models predict future links by compressing past interactions into neural states. Although effective for forecasting, this computation obscures which entities are shared across events and how temporal patterns contribute to a prediction. We treat this gap as a property of the predictive architecture rather than a problem to be addressed after prediction. Link-Fact Temporal Rule Inducer (LiFTER) is a neuro-symbolic predictor that preserves observed interactions as grounded temporal facts and applies executable tempo- ral rules to pre-query facts. Each score is a signed sum of rule exe- cutions whose historical facts, entity bindings, and temporal order are explicitly satisfied. The evidence and rules responsible for a prediction can therefore be inspected, independently recomputed, and intervened upon. Across four CTDG benchmarks, LiFTER achieves competitive historical-negative forecasting and the highest macro explanation ac- curacy and deletion fidelity. The same architecture also serves as a microscope that separates the contributions of recurrence, history po- sition, and transition across datasets and traces them to individual facts. Independent execution reconstructs all logits for 19,664 test predictions with a maximum error of 0.0000131. LiFTER turns future-link forecasting into a verifiable grounded computation.",
+      "authors": [
+        "Minwoo Yu",
+        "Young-guk Ha"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-07T03:39:09+00:00",
+      "link": "https://arxiv.org/pdf/2608.06765v1",
+      "tags": [
+        "keyword:traffic-flow",
+        "query:traffic-flow"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Continuous-time dynamic graph forecasting method with grounded temporal rules, transferable to traffic network forecasting",
+      "llm_evidence_cn": "连续时间动态图预测方法，通过时间规则提供可解释性，可迁移至交通网络预测",
+      "llm_evidence": "连续时间动态图预测方法，通过时间规则提供可解释性，可迁移至交通网络预测",
+      "canonical_evidence": "连续时间动态图预测方法，通过时间规则提供可解释性，可迁移至交通网络预测",
+      "llm_tldr_en": "LiFTER predicts links in continuous-time dynamic graphs by grounding observed interactions as temporal facts and applying executable rules, improving interpretability while maintaining forecasting accuracy.",
+      "llm_tldr_cn": "针对连续时间动态图预测中神经状态压缩导致的可解释性缺失问题，提出LiFTER模型，将观测到的交互保留为具体时间事实，并执行可执行的时间规则来计算预测分数。该方法能明确展示哪些历史事实和实体绑定支持预测。实验表明，LiFTER在保持预测性能的同时提供了预测证据和规则，适用于需要可解释预测的动态网络场景，如交通网络，有助于理解交通流预测中的时空演化机制。",
+      "llm_tldr": "针对连续时间动态图预测中神经状态压缩导致的可解释性缺失问题，提出LiFTER模型，将观测到的交互保留为具体时间事实，并执行可执行的时间规则来计算预测分数。该方法能明确展示哪些历史事实和实体绑定支持预测。实验表明，LiFTER在保持预测性能的同时提供了预测证据和规则，适用于需要可解释预测的动态网络场景，如交通网络，有助于理解交通流预测中的时空演化机制。",
+      "llm_tags": [
+        "query:traffic-flow:composite"
+      ],
+      "matched_query_tag": "query:traffic-flow:composite",
+      "matched_query_text": "Papers central to 交通流量预测相关论文检索, especially work that connects or combines: forecasting traffic flow in urban road networks; traffic; predicting the number of vehicles on road segments; modeling spatial and temporal patterns in traffic data; using neural networks for traffic flow forecasting; analyzing time series of traffic flow measurements; traffic flow prediction using deep learning; spatiotemporal deep learning for traffic forecasting; traffic prediction with graph neural networks.",
+      "matched_requirement_id": "req-composite-traffic-flow",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.04731v1",
+      "source": "arxiv",
+      "title": "An improved car-oriented mean-field theory for stochastic traffic flow models",
+      "abstract": "We propose an improved mean-field analysis of cellular automata models of single-lane vehicular traffic. By combining aspects of the Car-Oriented-Mean-Field (COMF) theory and the 2-site cluster method, which have been previously successfully applied to similar models, we aim to capture both short- and long-range correlations more accurately. In contrast to classical mean-field theories, the improved method is well suited for models with inhomogeneous stationary states and able to capture the essential properties of phase separation, e.g. in models with slow-to-start rules. The improved accuracy and new physical insights are illustrated through an application to the VDR model with $v_{\\text{max}}=1$.",
+      "authors": [
+        "Yasar Efe Dai",
+        "Andreas Schadschneider",
+        "Michael Schreckenberg"
+      ],
+      "primary_category": "cond-mat.stat-mech",
+      "categories": [
+        "cond-mat.stat-mech",
+        "nlin.CG",
+        "physics.soc-ph"
+      ],
+      "published": "2026-08-05T11:54:16+00:00",
+      "link": "https://arxiv.org/pdf/2608.04731v1",
+      "tags": [
+        "keyword:traffic-flow",
+        "query:traffic-flow"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Improved mean-field theory to capture short- and long-range correlations in stochastic traffic flow models",
+      "llm_evidence_cn": "改进平均场理论以捕捉随机交通流模型中的短程与长程关联",
+      "llm_evidence": "改进平均场理论以捕捉随机交通流模型中的短程与长程关联",
+      "canonical_evidence": "改进平均场理论以捕捉随机交通流模型中的短程与长程关联",
+      "llm_tldr_en": "Improves car-oriented mean-field theory by combining COMF and 2-site cluster methods to capture correlations and phase separation in stochastic traffic flow models.",
+      "llm_tldr_cn": "针对经典平均场理论难以刻画非均匀稳态和相分离特性的问题，该文将汽车取向平均场理论与2位点簇方法结合，提出改进的交通流平均场分析方法。该方法能同时捕捉短程和长程关联，适用于慢启动规则等非齐次随机交通流模型。通过v_max=1的VDR模型示例，展示了改进方法在预测相分离性质上的更高准确性。该工作为交通流建模与模式分析提供了更精细的理论工具，有助于理解交通拥堵的时空形成机制。",
+      "llm_tldr": "针对经典平均场理论难以刻画非均匀稳态和相分离特性的问题，该文将汽车取向平均场理论与2位点簇方法结合，提出改进的交通流平均场分析方法。该方法能同时捕捉短程和长程关联，适用于慢启动规则等非齐次随机交通流模型。通过v_max=1的VDR模型示例，展示了改进方法在预测相分离性质上的更高准确性。该工作为交通流建模与模式分析提供了更精细的理论工具，有助于理解交通拥堵的时空形成机制。",
+      "llm_tags": [
+        "query:traffic-flow"
+      ],
+      "matched_query_tag": "query:traffic-flow",
+      "matched_query_text": "modeling spatial and temporal patterns in traffic data",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.08306v1",
+      "source": "arxiv",
+      "title": "Hybrid spatial-temporal graph neural network Powered NDTs:Towards Next-Gen Smart Infrastructure Twins",
+      "abstract": "Network Digital Twins (NDTs) enable proactive network management and optimization by predicting system behavior before control actions are applied to live infrastructures, supporting critical operations in Internet Service Provider (ISP) networks and wide-area networks (WANs). However, to anchor the superior performance NDTs promise to provide, key enabler techniques are required. Given that mobile networks are modeled as graphs, graph-based architectures such as graph neural networks (GNNs) have shown promising performance in modeling network behavior. This work proposes a novel Hybrid Spatial-Temporal Graph Neural Network (HSTGNN) architecture. Unlike single-branch GNN approaches, we propose a multi-scale design that combines three complementary message-passing paradigms: local neighborhood aggregation, spectral filtering, and learnable attention-based weighting. When benchmarked against other approaches, the proposed HSTGNN achieved superior performance delivering a coefficient of determination score of approximately 0.8816, 17.5\\% better than the best baseline ChebNet. Furthermore, HSTGNN achieved the lowest Mean Absolute Error (MAE) of 0.0300, and Root Mean Squared Error (RMSE) of 0.0458, significantly outperforming baseline frameworks and certifying the proposed framework's capability in enabling NDTs.",
+      "authors": [
+        "John Sengendo",
+        "Fabrizio Granelli"
+      ],
+      "primary_category": "cs.ET",
+      "categories": [
+        "cs.ET"
+      ],
+      "published": "2026-08-08T19:35:29+00:00",
+      "link": "https://arxiv.org/pdf/2608.08306v1",
+      "tags": [
+        "keyword:traffic-flow",
+        "query:traffic-flow"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "hybrid spatial-temporal graph neural network for predicting network behavior; transferable to traffic graph learning",
+      "llm_evidence_cn": "面向网络行为预测的混合时空图神经网络，方法可迁移至交通图学习",
+      "llm_evidence": "面向网络行为预测的混合时空图神经网络，方法可迁移至交通图学习",
+      "canonical_evidence": "面向网络行为预测的混合时空图神经网络，方法可迁移至交通图学习",
+      "llm_tldr_en": "Proposes a Hybrid Spatial-Temporal Graph Neural Network with multi-scale design for network digital twins, relevant to graph-based spatiotemporal forecasting.",
+      "llm_tldr_cn": "网络数字孪生需要先预测系统行为再对基础设施实施控制，图神经网络在建模网络行为上表现良好。本文提出混合时空图神经网络HSTGNN，采用多尺度设计，联合空间与时间建模，以支持ISP/WAN等网络的数字孪生。该方法面向网络流预测，与道路流量预测共享时空图建模核心技术，具有方法迁移价值。",
+      "llm_tldr": "网络数字孪生需要先预测系统行为再对基础设施实施控制，图神经网络在建模网络行为上表现良好。本文提出混合时空图神经网络HSTGNN，采用多尺度设计，联合空间与时间建模，以支持ISP/WAN等网络的数字孪生。该方法面向网络流预测，与道路流量预测共享时空图建模核心技术，具有方法迁移价值。",
+      "llm_tags": [
+        "query:traffic-flow"
+      ],
+      "matched_query_tag": "query:traffic-flow",
+      "matched_query_text": "traffic prediction with graph neural networks",
+      "matched_requirement_id": "req-9",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.05786v1",
+      "source": "arxiv",
+      "title": "Fuzzy network jump models for soft dynamic clustering of graph-structured data",
+      "abstract": "We introduce a fuzzy network jump model for clustering time-varying observations indexed by the nodes of a weighted graph. The framework allows flexible graph representations with spatial and temporal regularization promoting smooth soft cluster assignments across connected nodes and consecutive time points. Estimation is performed through an efficient alternating optimization scheme that exploits the quadratic structure of the regularization terms. A simulation study covering different levels of spatial dependence and cluster overlap shows that the proposed method accurately recovers the true membership probabilities and outperforms competing clustering methods. An application to traffic-network data for the city of San Francisco identifies interpretable traffic regimes and reveals their evolution over time and across connected road segments.",
+      "authors": [
+        "Federico P. Cortese"
+      ],
+      "primary_category": "stat.ME",
+      "categories": [
+        "stat.ME",
+        "stat.AP",
+        "stat.ML"
+      ],
+      "published": "2026-08-06T09:19:59+00:00",
+      "link": "https://arxiv.org/pdf/2608.05786v1",
+      "tags": [
+        "keyword:traffic-flow",
+        "query:traffic-flow"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "soft dynamic clustering of traffic-network data with spatial and temporal regularization",
+      "llm_evidence_cn": "提出带空间与时间正则化的软动态聚类，并应用于旧金山交通网络数据",
+      "llm_evidence": "提出带空间与时间正则化的软动态聚类，并应用于旧金山交通网络数据",
+      "canonical_evidence": "提出带空间与时间正则化的软动态聚类，并应用于旧金山交通网络数据",
+      "llm_tldr_en": "Introduces fuzzy network jump models for soft dynamic clustering of time-varying graph data, applied to San Francisco traffic network; models spatiotemporal patterns.",
+      "llm_tldr_cn": "面向随时间变化的图数据，本文提出模糊网络跳跃模型，通过空间与时间正则化促进相邻节点和连续时间点上的平滑软聚类，并利用交替优化高效估计。模拟研究显示其在恢复成员概率上优于竞争聚类方法。在旧金山交通网络数据上的应用验证了方法对交通时空模式的刻画能力，可为后续流量预测提供结构化的模式分析工具。",
+      "llm_tldr": "面向随时间变化的图数据，本文提出模糊网络跳跃模型，通过空间与时间正则化促进相邻节点和连续时间点上的平滑软聚类，并利用交替优化高效估计。模拟研究显示其在恢复成员概率上优于竞争聚类方法。在旧金山交通网络数据上的应用验证了方法对交通时空模式的刻画能力，可为后续流量预测提供结构化的模式分析工具。",
+      "llm_tags": [
+        "query:traffic-flow"
+      ],
+      "matched_query_tag": "query:traffic-flow",
+      "matched_query_text": "modeling spatial and temporal patterns in traffic data",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.09031v1",
+      "source": "arxiv",
+      "title": "HOPPER: Learnable Hop Extraction for Linearized Graph Sequence Models",
+      "abstract": "Graph neural networks typically propagate information through repeated message-passing layers, coupling the distance over which information travels with the number of nonlinear transformations applied. This coupling can make deep architectures difficult to optimize and can lead to over-smoothing, over-squashing, and the loss of long-range information. Linearized Graph Sequence Models (LGSMs) address this issue by separating information depth from processing depth and treating the successive propagation states of each node as a sequence. However, existing LGSMs construct these sequences using fixed graph operators, limiting their ability to adapt propagation to the input graph, node features, and downstream task. We introduce HOPPER, an end-to-end learnable extension of LGSM that learns how hop sequences should be extracted before they are processed by a modern state-space model. Our framework supports feature-conditioned, structure-aware, graph- and hop-adaptive propagation mechanisms while preserving permutation equivariance. Standard adjacency-based and non-backtracking LGSM sequences arise as special cases of our proposed extractor family. We show that HOPPER is state-of-the-art or competitive across the ECHO-Synth benchmark, and that varying the maximum neighborhood size of message backtracking cancellation (i.e. structural memory window) can optimize accuracy on the LRIM physics-based long-range dependency benchmark. These results demonstrate that learnable sequence extraction provides a flexible and effective approach to long-range graph representation learning.",
+      "authors": [
+        "Isuru Herath",
+        "Arin Gopakumar",
+        "Sharan Sahu"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-10T02:31:46+00:00",
+      "link": "https://arxiv.org/pdf/2608.09031v1",
+      "tags": [
+        "keyword:traffic-flow",
+        "query:traffic-flow"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "graph sequence model method for graph-structured time series prediction",
+      "llm_evidence_cn": "图序列建模方法，可用于图结构交通流预测",
+      "llm_evidence": "图序列建模方法，可用于图结构交通流预测",
+      "canonical_evidence": "图序列建模方法，可用于图结构交通流预测",
+      "llm_tldr_en": "HOPPER is a learnable hop extraction method for linearized graph sequence models, decoupling information propagation depth from nonlinear processing via end-to-end training. It mitigates over-smoothing and over-squashing, improving long-range information capture.",
+      "llm_tldr_cn": "针对线性化图序列模型使用固定图算子导致传播难以自适应的问题，提出HOPPER。它端到端学习从节点状态序列中提取跳数信息，将信息传播距离与非线性处理深度解耦，缓解过度平滑和过度压缩。实验表明HOPPER在多个图学习任务上提升长程信息捕获能力，可服务于图结构的交通流预测。",
+      "llm_tldr": "针对线性化图序列模型使用固定图算子导致传播难以自适应的问题，提出HOPPER。它端到端学习从节点状态序列中提取跳数信息，将信息传播距离与非线性处理深度解耦，缓解过度平滑和过度压缩。实验表明HOPPER在多个图学习任务上提升长程信息捕获能力，可服务于图结构的交通流预测。",
+      "llm_tags": [
+        "query:traffic-flow"
+      ],
+      "matched_query_tag": "query:traffic-flow",
+      "matched_query_text": "traffic prediction with graph neural networks",
+      "matched_requirement_id": "req-9",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.06223v1",
+      "source": "arxiv",
+      "title": "TS-RAG: Retrieval Augmented Generation for Time Series Forecasting",
+      "abstract": "While deep learning models, particularly transformer-based architectures, have shown impressive performance in time series forecasting, the application of retrieval-augmented generation (RAG) in this domain remains limited. Since RAG has proven effective in enhancing the capabilities of large language models by incorporating relevant external information, retrieving similar time series sequences as references might also improve accuracy in time series forecasting tasks. However, most time series models are constrained by limited training data, smaller parameter scales, and a lack of the extensive generative capabilities found in large language models. Simply concatenating reference sequences into the prompt, as done in language models, may not yield the expected results. To address these challenges, we propose a novel approach, TS-RAG, which leverages RAG to enhance forecasting performance. The framework introduces specially designed reference tokens to effectively fuse information from the input sequence with that from retrieved similar sequences, enabling a more robust capture of complex temporal dynamics. Experimental results demonstrate that TS-RAG achieves consistent state-of-the-art performance across several real-world forecasting benchmarks.",
+      "authors": [
+        "Yixiong Xiao",
+        "Congxi Xiao",
+        "Jingbo Zhou"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-08-06T16:12:57+00:00",
+      "link": "https://arxiv.org/pdf/2608.06223v1",
+      "tags": [
+        "keyword:traffic-flow",
+        "query:traffic-flow"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "general time series forecasting with retrieval-augmented deep learning",
+      "llm_evidence_cn": "通用时间序列预测，采用检索增强深度学习，可迁移至交通流",
+      "llm_evidence": "通用时间序列预测，采用检索增强深度学习，可迁移至交通流",
+      "canonical_evidence": "通用时间序列预测，采用检索增强深度学习，可迁移至交通流",
+      "llm_tldr_en": "Introduces TS-RAG, a retrieval-augmented generation framework for time series forecasting that retrieves similar historical sequences as references to boost deep prediction models. Achieves consistent accuracy gains on standard benchmarks.",
+      "llm_tldr_cn": "本文针对时间序列预测中训练数据有限和模型参数规模小的问题，提出检索增强生成框架TS-RAG。它检索与目标序列相似的历史序列作为参考，增强深度预测模型的特征表达，而不依赖大规模语言模型。在多个时间序列基准上，TS-RAG显著提升了预测精度，并证明该思路可扩展至交通流等场景。",
+      "llm_tldr": "本文针对时间序列预测中训练数据有限和模型参数规模小的问题，提出检索增强生成框架TS-RAG。它检索与目标序列相似的历史序列作为参考，增强深度预测模型的特征表达，而不依赖大规模语言模型。在多个时间序列基准上，TS-RAG显著提升了预测精度，并证明该思路可扩展至交通流等场景。",
+      "llm_tags": [
+        "query:traffic-flow"
+      ],
+      "matched_query_tag": "query:traffic-flow",
+      "matched_query_text": "traffic flow prediction using deep learning",
+      "matched_requirement_id": "req-7",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

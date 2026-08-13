@@ -1,0 +1,217 @@
+{
+  "date": "20260804-20260813",
+  "date_label": "2026-08-04 ~ 2026-08-13",
+  "generated_at": "2026-08-13 07:41:21 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.09082v1",
+      "route": "20260804-20260813/2608.09082v1-f2stnet-fair-and-federated-spectral-temporal-modeling-for-graph-forecasting",
+      "title": "F2STNet: Fair and Federated Spectral-Temporal Modeling for Graph Forecasting",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "traffic-flow"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "基于图的时空预测模型在交通流数据上验证",
+      "first_seen_at": "2026-08-13 07:41:21 UTC",
+      "updated_at": "2026-08-13 07:41:21 UTC"
+    },
+    {
+      "paper_id": "2608.04157v1",
+      "route": "20260804-20260813/2608.04157v1-mint-tensor-decomposition-on-stacked-recurrence-matrices-for-time-series-data-mining",
+      "title": "MINT: Tensor Decomposition on Stacked Recurrence Matrices for Time Series Data Mining",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "traffic-flow"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "用张量分解处理递归矩阵进行时间序列分析，并在快速轨道交通数据上验证",
+      "first_seen_at": "2026-08-13 07:41:21 UTC",
+      "updated_at": "2026-08-13 07:41:21 UTC"
+    },
+    {
+      "paper_id": "2608.03449v1",
+      "route": "20260804-20260813/2608.03449v1-fast-covariance-free-spatiotemporal-modeling-via-coarse-to-fine-learning",
+      "title": "Fast covariance-free spatiotemporal modeling via coarse-to-fine learning",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "traffic-flow"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "适用于交通数据的无协方差时空建模框架",
+      "first_seen_at": "2026-08-13 07:41:21 UTC",
+      "updated_at": "2026-08-13 07:41:21 UTC"
+    },
+    {
+      "paper_id": "2608.04075v1",
+      "route": "20260804-20260813/2608.04075v1-spatiotemporal-graph-transformer-for-traffic-intelligence-in-edge-computing",
+      "title": "Spatiotemporal Graph Transformer for Traffic Intelligence in Edge Computing",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "traffic-flow"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "面向流量预测的时空图Transformer，联合空间交互与时间依赖建模",
+      "first_seen_at": "2026-08-13 07:41:21 UTC",
+      "updated_at": "2026-08-13 07:41:21 UTC"
+    },
+    {
+      "paper_id": "2608.04471v1",
+      "route": "20260804-20260813/2608.04471v1-beyond-linear-dynamics-neural-bilinear-dynamical-models-for-time-series-forecasting",
+      "title": "Beyond Linear Dynamics: Neural Bilinear Dynamical Models for Time Series Forecasting",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "traffic-flow"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "面向非线性时间序列预测的神经双线性动力学模型，可迁移至交通流预测",
+      "first_seen_at": "2026-08-13 07:41:21 UTC",
+      "updated_at": "2026-08-13 07:41:21 UTC"
+    },
+    {
+      "paper_id": "2608.04731v1",
+      "route": "20260804-20260813/2608.04731v1-an-improved-car-oriented-mean-field-theory-for-stochastic-traffic-flow-models",
+      "title": "An improved car-oriented mean-field theory for stochastic traffic flow models",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "traffic-flow"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "改进平均场理论以捕捉随机交通流模型中的短程与长程关联",
+      "first_seen_at": "2026-08-13 07:41:21 UTC",
+      "updated_at": "2026-08-13 07:41:21 UTC"
+    },
+    {
+      "paper_id": "2608.05786v1",
+      "route": "20260804-20260813/2608.05786v1-fuzzy-network-jump-models-for-soft-dynamic-clustering-of-graph-structured-data",
+      "title": "Fuzzy network jump models for soft dynamic clustering of graph-structured data",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "traffic-flow"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "提出带空间与时间正则化的软动态聚类，并应用于旧金山交通网络数据",
+      "first_seen_at": "2026-08-13 07:41:21 UTC",
+      "updated_at": "2026-08-13 07:41:21 UTC"
+    },
+    {
+      "paper_id": "2608.06223v1",
+      "route": "20260804-20260813/2608.06223v1-ts-rag-retrieval-augmented-generation-for-time-series-forecasting",
+      "title": "TS-RAG: Retrieval Augmented Generation for Time Series Forecasting",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "traffic-flow"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "通用时间序列预测，采用检索增强深度学习，可迁移至交通流",
+      "first_seen_at": "2026-08-13 07:41:21 UTC",
+      "updated_at": "2026-08-13 07:41:21 UTC"
+    },
+    {
+      "paper_id": "2608.03630v1",
+      "route": "20260804-20260813/2608.03630v1-poem-phase-aware-mathrmso2-feature-rotation-for-time-series-forecasting-under-periodicity-drift",
+      "title": "POEM: Phase-Aware $\\mathrm{SO}(2)$ Feature Rotation for Time Series Forecasting Under Periodicity Drift",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "traffic-flow"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "面向周期漂移的相位感知时间序列预测方法，适用于交通流时间序列分析",
+      "first_seen_at": "2026-08-13 07:41:21 UTC",
+      "updated_at": "2026-08-13 07:41:21 UTC"
+    },
+    {
+      "paper_id": "2608.06241v1",
+      "route": "20260804-20260813/2608.06241v1-timestep-conditioned-transformers-for-global-weather-forecasting",
+      "title": "Timestep-Conditioned Transformers for Global Weather Forecasting",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "traffic-flow"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "时间步条件Transformer的时空深度学习预测，方法可迁移至交通预测",
+      "first_seen_at": "2026-08-13 07:41:21 UTC",
+      "updated_at": "2026-08-13 07:41:21 UTC"
+    },
+    {
+      "paper_id": "2608.06765v1",
+      "route": "20260804-20260813/2608.06765v1-lifter-a-grounded-neuro-symbolic-microscope-for-continuous-time-dynamic-graph-forecasting",
+      "title": "LiFTER: A Grounded Neuro-Symbolic Microscope for Continuous-Time Dynamic Graph Forecasting",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "traffic-flow"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "连续时间动态图预测方法，通过时间规则提供可解释性，可迁移至交通网络预测",
+      "first_seen_at": "2026-08-13 07:41:21 UTC",
+      "updated_at": "2026-08-13 07:41:21 UTC"
+    },
+    {
+      "paper_id": "2608.08306v1",
+      "route": "20260804-20260813/2608.08306v1-hybrid-spatial-temporal-graph-neural-network-powered-ndtstowards-next-gen-smart-infrastructure-twins",
+      "title": "Hybrid spatial-temporal graph neural network Powered NDTs:Towards Next-Gen Smart Infrastructure Twins",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "traffic-flow"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "面向网络行为预测的混合时空图神经网络，方法可迁移至交通图学习",
+      "first_seen_at": "2026-08-13 07:41:21 UTC",
+      "updated_at": "2026-08-13 07:41:21 UTC"
+    },
+    {
+      "paper_id": "2608.09031v1",
+      "route": "20260804-20260813/2608.09031v1-hopper-learnable-hop-extraction-for-linearized-graph-sequence-models",
+      "title": "HOPPER: Learnable Hop Extraction for Linearized Graph Sequence Models",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "traffic-flow"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "图序列建模方法，可用于图结构交通流预测",
+      "first_seen_at": "2026-08-13 07:41:21 UTC",
+      "updated_at": "2026-08-13 07:41:21 UTC"
+    }
+  ]
+}
