@@ -25,3 +25,60 @@ subscriptions:
     stage: A
     diff_threshold_pct: 15
   keyword_recall_mode: or
+  intent_profiles:
+    - tag: traffic-flow
+      description: 交通流量预测相关论文检索
+      enabled: true
+      paper_sources:
+        - arxiv
+      keywords:
+        - keyword: traffic flow prediction
+          keyword_cn: 交通流预测
+          query: forecasting traffic flow in urban road networks
+        - keyword: traffic prediction
+          keyword_cn: 交通预测
+          query: traffic
+        - keyword: traffic volume prediction
+          keyword_cn: 交通量预测
+          query: predicting the number of vehicles on road segments
+        - keyword: spatiotemporal traffic data
+          keyword_cn: 时空交通数据
+          query: modeling spatial and temporal patterns in traffic data
+        - keyword: deep learning traffic forecasting
+          keyword_cn: 深度学习交通预测
+          query: using neural networks for traffic flow forecasting
+        - keyword: traffic flow time series
+          keyword_cn: 交通流时间序列
+          query: analyzing time series of traffic flow measurements
+      intent_queries:
+        - query: traffic flow prediction using deep learning
+          query_cn: 基于深度学习的交通流预测
+          enabled: true
+          source: manual
+          note: ''
+        - query: spatiotemporal deep learning for traffic forecasting
+          query_cn: 时空深度学习在交通预测中的应用
+          enabled: true
+          source: manual
+          note: ''
+        - query: traffic prediction with graph neural networks
+          query_cn: 图神经网络用于交通预测
+          enabled: true
+          source: manual
+          note: ''
+      updated_at: '2026-08-13T07:24:17.062Z'
+source_backends:
+  arxiv:
+    papers_table: arxiv_papers
+    use_vector_rpc: true
+    vector_rpc: match_arxiv_papers
+    vector_rpc_exact: match_arxiv_papers_exact
+    use_bm25_rpc: true
+    bm25_rpc: match_arxiv_papers_bm25
+    sync_table: arxiv_sync_status
+    sync_success_value: success
+    schema: public
+    kind: supabase
+    enabled: true
+    url: https://lyucdwgefyfbmaiopjbk.supabase.co
+    anon_key: sb_publishable_lX-oi64Uxyd7SIVv3_w2Uw_MTOojeKq
